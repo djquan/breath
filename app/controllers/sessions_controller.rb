@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
   def new
-    @user = User.new
-    render :new
+    if current_user
+      redirect_to app_url
+    else
+      @user = User.new
+      render :new
+    end
   end
 
   def create
@@ -18,6 +22,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-
+    current_user.reset_session_token!
+    session[:session_token] = nil
+    redirect_to new_session_url
   end
 end

@@ -4,9 +4,11 @@ window.Breath = {
   Views: {},
   Routers: {},
   initialize: function() {
+    new Breath.Routers.AppRouter();
+    Backbone.history.start();
   }
 };
 
-$(document).ready(function(){
-  Breath.initialize();
-});
+// $(document).ready(function(){
+//   Breath.initialize();
+// });

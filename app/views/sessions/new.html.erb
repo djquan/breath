@@ -1,7 +1,11 @@
-<h1 id="log_in">Log In</h1>
-<%= current_user.name if current_user %>
+<div class='container'>
+<h1 id="log_in">Sign in</h1>
+  <div class='row-fluid'>
+    <div class="span3 offset1">
+      <%= render 'layouts/form_users',
+        action: session_url, update: false, button_name: "Sign In" %>
 
-<%= render 'layouts/form_users',
-		action: session_url, update: false, button_name: "Sign In" %>
-
-<%= link_to "Sign up", new_user_url %> 
+      <%= link_to "Sign up", new_user_url %> 
+    </div>
+  </div>
+</div>

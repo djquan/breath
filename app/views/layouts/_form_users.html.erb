@@ -1,15 +1,13 @@
-<div class="errors">
   <% flash[:errors].try(:each) do |error| %>
+    <div class="alert">
     <%= error %> 
+  </div>
   <% end %> 
-</div>
 
-<%= session[:session_token] %>
 <br>
 <form action="<%= action %>" method="POST" accept-charset="utf-8">
 	<input type="hidden" name="authenticity_token"
 	 value="<%= form_authenticity_token %>">
-
 	 <label for="username">Username</label>
 	 <input type="text" name="user[name]" value="<%= @user.name %>" id="username">
    <br>
@@ -20,6 +18,7 @@
    <br>
 	 <label for="password">Password</label>
 	 <input type="password" name="user[password]" id="password">
-   <br>
-	<p><input type="submit" value="<%= button_name %>" id= "<%= button_name %>"></p>
+   <br><br>
+   <p><input class="btn btn-default btn-wide btn-primary" type="submit" 
+       value="<%= button_name %>" id= "<%= button_name %>"></p>
 </form>
