@@ -6,7 +6,7 @@ Breath.Views.PersonalProjects = Backbone.View.extend({
   },
 
   events: {
-    'blur #form-personal': 'submitPersonal'
+    'blur #form-personal': 'submitPersonal',
   },
 
   render: function(){

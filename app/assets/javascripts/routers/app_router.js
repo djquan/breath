@@ -1,6 +1,7 @@
 Breath.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     '': 'showRootPage',
+    'projects/:id': 'showProjectPage'
   },
 
   showRootPage: function(){
@@ -10,10 +11,18 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
     $('.app-sidebar').html(sidebar.render().$el)
   },
 
-  _swapView: function (newView) {
-    if (this._prevView) { this._prevView.remove(); }
-    this._prevView = newView;
+  showProjectPage: function(id){
+    var projectPage = new Breath.Views.ProjectView({
+      model: Breath.user.projects().get(id)
+    });
+
+    this._swapMainView(projectPage);
+  },
+
+  _swapMainView: function (newView) {
+    if (this._prevMainView) { this._prevMainView.remove(); }
+    this._prevMainView = newView;
     newView.render();
-    $(".content").html(newView.$el);
+    $(".index").html(newView.$el);
   }
 })

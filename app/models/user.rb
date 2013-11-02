@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   
   has_many :projects, foreign_key: :owner_id
+  has_many :tasks, foreign_key: :creator_id
 
   def password=(password)
     @password = password

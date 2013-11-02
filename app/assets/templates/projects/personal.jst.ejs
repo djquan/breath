@@ -1,7 +1,10 @@
 <h5> Personal</h5>
 <% projects.each(function(project){ %>
-<span id="project_<%=project.id%>"><%= project.escape('name') %> </span> <br>
+<% if (project.get('team_id') === 0) {  %>
+    <span class="project-link" data-id="<%=project.id%>">
+      <%= project.escape('name') %> 
+    </span> <br>
+<% } %>
 <% }) %>
-
 <br>
 <input type="text" id="form-personal">

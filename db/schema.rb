@@ -11,17 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102183247) do
+ActiveRecord::Schema.define(version: 20131102232119) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "team_id",    default: 0
   end
 
   add_index "projects", ["name"], name: "index_projects_on_name"
   add_index "projects", ["owner_id"], name: "index_projects_on_owner_id"
+  add_index "projects", ["team_id"], name: "index_projects_on_team_id"
+
+  create_table "tasks", force: true do |t|
+    t.string   "description"
+    t.string   "name"
+    t.boolean  "completed"
+    t.datetime "due"
+    t.integer  "project_id"
+    t.integer  "parent_id"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["creator_id"], name: "index_tasks_on_creator_id"
+  add_index "tasks", ["name"], name: "index_tasks_on_name"
+  add_index "tasks", ["parent_id"], name: "index_tasks_on_parent_id"
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
