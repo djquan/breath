@@ -4,7 +4,7 @@ Breath::Application.routes.draw do
   resource :session, only: [:create, :destroy]
 
   namespace "api", defaults: { format: :json } do 
-    resources :projects, only: [:create, :destroy, :update]
+    resources :projects, only: [:index, :show, :create, :destroy, :update]
   end
 
   root to: "sessions#new"

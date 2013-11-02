@@ -4,6 +4,15 @@ class UsersController < ApplicationController
     render :new
   end
 
+  def show
+    render json: current_user
+  end
+
+  def index
+    current = User.includes(:projects).find(current_user.id)
+    render json: current, include: :projects
+  end
+  
   def create
     @user = User.new(user_params)
 

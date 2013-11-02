@@ -4,8 +4,14 @@ window.Breath = {
   Views: {},
   Routers: {},
   initialize: function() {
-    new Breath.Routers.AppRouter();
-    Backbone.history.start();
+    Breath.user = new Breath.Models.User()
+
+    Breath.user.fetch({
+      success: function(){
+        new Breath.Routers.AppRouter();
+        Backbone.history.start();
+      }
+    })
   }
 };
 
