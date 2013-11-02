@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   attr_reader :password
   after_initialize :ensure_session_token
+  
+  has_many :projects, foreign_key: :owner_id
 
   def password=(password)
     @password = password
