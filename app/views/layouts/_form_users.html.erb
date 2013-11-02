@@ -1,0 +1,25 @@
+<div class="errors">
+  <% flash[:errors].try(:each) do |error| %>
+    <%= error %> 
+  <% end %> 
+</div>
+
+<%= session[:session_token] %>
+<br>
+<form action="<%= action %>" method="POST" accept-charset="utf-8">
+	<input type="hidden" name="authenticity_token"
+	 value="<%= form_authenticity_token %>">
+
+	 <label for="username">Username</label>
+	 <input type="text" name="user[name]" value="<%= @user.name %>" id="username">
+   <br>
+   <% if action == users_url %>
+	 <label for="email">Email</label>
+	 <input type="email" name="user[email]" value="<%= @user.email %>" id="email">
+   <% end %>
+   <br>
+	 <label for="password">Password</label>
+	 <input type="password" name="user[password]" id="password">
+   <br>
+	<p><input type="submit" value="<%= button_name %>" id= "<%= button_name %>"></p>
+</form>

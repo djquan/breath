@@ -1,0 +1,7 @@
+<h1 id="log_in">Log In</h1>
+<%= current_user.name if current_user %>
+
+<%= render 'layouts/form_users',
+		action: session_url, update: false, button_name: "Sign In" %>
+
+<%= link_to "Sign up", new_user_url %> 

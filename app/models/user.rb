@@ -1,5 +1,10 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
   validates :name, :password_digest, :email, :session_token, presence: true
+  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :name, :email, uniqueness: true
+
   attr_reader :password
   after_initialize :ensure_session_token
 
@@ -15,6 +20,7 @@ class User < ActiveRecord::Base
   def reset_session_token!
     self.session_token = self.class.generate_session_token
     self.save!
+    self.session_token
   end
 
   class << self
@@ -22,8 +28,8 @@ class User < ActiveRecord::Base
       SecureRandom::urlsafe_base64(16)
     end
 
-    def self.find_by_credentials(username, password)
-      user = User.find_by_username(username)
+    def find_by_credentials(username, password)
+      user = User.find_by_name(username)
       return nil unless user
       user.is_password?(password) ? user : nil
     end
@@ -32,9 +38,5 @@ class User < ActiveRecord::Base
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
-  end
-
-  def user_params
-    params.require(:user).permit(:name, :email, :password)
   end
 end
