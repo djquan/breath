@@ -7,6 +7,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
 
   events: {
     'blur #form-task': 'submitTask',
+    'click .task_list': 'showTask', 
   },
 
   render: function(){
@@ -18,6 +19,11 @@ Breath.Views.TaskIndex = Backbone.View.extend({
     return this;
   },
 
+  showTask: function(event){
+    var destination = $(event.currentTarget).data('id');
+    Backbone.history.navigate('tasks/' + destination, {trigger: true})
+  },
+
   submitTask: function(event){
     var name = $(event.currentTarget).val();
     if (name === "") { return  };
@@ -25,7 +31,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
       name: name
     }, {
       success: function(obj){
-        console.log(obj)
+        Backbone.history.navigate('/tasks/' + obj.id, {trigger: true})
       }
     })
   }

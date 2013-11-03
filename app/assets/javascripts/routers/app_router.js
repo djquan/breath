@@ -1,7 +1,16 @@
 Breath.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     '': 'showRootPage',
-    'projects/:id': 'showProjectPage'
+    'projects/:id': 'showProjectPage',
+    'tasks/:id': 'showTaskEditPage'
+  },
+
+  showTaskEditPage: function(id){
+    var taskEditPage = new Breath.Views.TaskEdit({
+      model: Breath.user.tasks().get(id)
+    });
+
+    this._swapTaskView(taskEditPage)
   },
 
   showRootPage: function(){
@@ -30,5 +39,12 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
     this._prevMainView = newView;
     newView.render();
     $(".index").html(newView.$el);
+  },
+
+  _swapTaskView: function(newView){
+    if (this._prevTaskView) { this._prevTaskView.remove(); }
+    this._prevTaskView = newView;
+    newView.render();
+    $(".task-detail").html(newView.$el);
   }
 })

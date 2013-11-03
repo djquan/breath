@@ -2,6 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body{
+  background: #DDE4EA;
+}
+
+.index {
+  background: white;
+  border-radius: 5%;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.task-detail{
+  background: white;
+  border-radius: 5%;
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
 .app-sidebar{
   margin-left: 10px;
 }
