@@ -8,6 +8,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
   events: {
     'blur input': 'updateTask',
     'click .completed': 'toggleComplete',
+    'click .remove': 'removeTask'
   },
 
   toggleComplete: function(event){
@@ -31,6 +32,14 @@ Breath.Views.TaskEdit = Backbone.View.extend({
         }
       }
     })
+  },
+
+  removeTask: function(event){
+    this.model.destroy({
+      success: function(obj){
+        $('.task-detail').html('')
+      }
+    });
   },
 
   render: function(){
