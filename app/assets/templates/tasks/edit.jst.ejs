@@ -1,5 +1,11 @@
 <form>
   <input type='text' name="name" value="<%= task.escape('name')%>"><br><br>
   <input type='text' name='description' 
-         value="<%= task.escape('description') %>">
+         value="<%= task.escape('description') %>"><br>
+
+  <br><input type='date' name='due' value="<%= task.escape('due')%>">
 </form>
+<br><br>
+
+<% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
+<button class="completed"><%= com %></button>

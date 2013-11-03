@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102232119) do
+ActiveRecord::Schema.define(version: 20131103050615) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20131102232119) do
     t.string   "description"
     t.string   "name"
     t.boolean  "completed"
-    t.datetime "due"
+    t.date     "due"
     t.integer  "project_id"
     t.integer  "parent_id"
     t.integer  "creator_id"

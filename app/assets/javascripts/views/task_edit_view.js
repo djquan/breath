@@ -6,7 +6,17 @@ Breath.Views.TaskEdit = Backbone.View.extend({
   },
 
   events: {
-    'blur input': 'updateTask'
+    'blur input': 'updateTask',
+    'click .completed': 'toggleComplete',
+  },
+
+  toggleComplete: function(event){
+    var completedVar = this.model.get('completed') ? false : true
+    this.model.save('completed', completedVar, {
+      success: function(obj){
+      }
+    })
+    
   },
 
   updateTask: function(event){
