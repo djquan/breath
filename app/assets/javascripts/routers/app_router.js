@@ -8,7 +8,13 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
     var sidebar = new Breath.Views.SidebarView({
       model: Breath.user
     });
-    $('.app-sidebar').html(sidebar.render().$el)
+    
+    var taskIndex = new Breath.Views.TaskIndex({
+      collection: Breath.user.tasks()
+    });
+
+    $('.app-sidebar').html(sidebar.render().$el);
+    this._swapMainView(taskIndex);
   },
 
   showProjectPage: function(id){

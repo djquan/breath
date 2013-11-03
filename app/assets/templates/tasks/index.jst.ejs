@@ -1,0 +1,9 @@
+<h3>Tasks</h3>
+<% tasks.each(function(task){ %>
+<span class="task_list" data-id: "<%= task.id %>">
+  <%= task.get('name') %>
+</span><br>
+<% }) %>
+
+<br>
+<input type="text" id="form-task">
