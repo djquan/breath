@@ -3,10 +3,10 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :description
       t.string :name
-      t.boolean :completed
+      t.boolean :completed, default: false
       t.datetime :due
-      t.integer :project_id
-      t.integer :parent_id
+      t.integer :project_id, default: nil
+      t.integer :parent_id, default: nil
       t.integer :creator_id
 
       t.timestamps
