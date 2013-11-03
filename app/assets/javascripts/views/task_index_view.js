@@ -13,7 +13,8 @@ Breath.Views.TaskIndex = Backbone.View.extend({
 
   render: function(){
     var renderedContent = this.template({
-      tasks: this.collection
+      tasks: this.collection,
+      project: new Breath.Models.Project({name: "All", id: 0})
     });
 
     this.$el.html(renderedContent);

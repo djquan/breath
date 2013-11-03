@@ -1,4 +1,5 @@
-<h3>Tasks</h3>
+<h2><%= project.get('name') %> </h2>
+  
 <% tasks.each(function(task){ %>
 <% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
 <% var checkedTask = task.get('completed') ? 'checked' : '' %>
