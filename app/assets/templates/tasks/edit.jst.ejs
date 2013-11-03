@@ -1,1 +1,5 @@
-<h3> <%= task.escape('name') %> </h3>
+<form>
+  <input type='text' name="name" value="<%= task.escape('name')%>"><br><br>
+  <input type='text' name='description' 
+         value="<%= task.escape('description') %>">
+</form>

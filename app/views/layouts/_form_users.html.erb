@@ -8,15 +8,18 @@
 <form action="<%= action %>" method="POST" accept-charset="utf-8">
 	<input type="hidden" name="authenticity_token"
 	 value="<%= form_authenticity_token %>">
-	 <label for="username">Username</label>
+   <label for="username">Username</label><br>
 	 <input type="text" name="user[name]" value="<%= @user.name %>" id="username">
    <br>
    <% if action == users_url %>
-	 <label for="email">Email</label>
+   <br>
+   <label for="email">Email</label><br>
 	 <input type="email" name="user[email]" value="<%= @user.email %>" id="email">
+   <br>
    <% end %>
    <br>
 	 <label for="password">Password</label>
+   <br>
 	 <input type="password" name="user[password]" id="password">
    <br><br>
    <p><input class="btn btn-default btn-wide btn-primary" type="submit" 
