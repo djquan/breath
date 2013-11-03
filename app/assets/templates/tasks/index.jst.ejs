@@ -1,7 +1,12 @@
 <h3>Tasks</h3>
 <% tasks.each(function(task){ %>
-<span class="task_list" data-id="<%= task.id %>">
-  <%= task.get('name') %>
+<% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
+<% var checkedTask = task.get('completed') ? 'checked' : '' %>
+<input type='checkbox' <%= checkedTask %> 
+       class="complete-check" data-id="<%= task.id %>">
+
+<span class="task_list <%= completeClass %>" data-id="<%= task.id %>">
+   <%= task.get('name') %>
 </span><br>
 <% }) %>
 

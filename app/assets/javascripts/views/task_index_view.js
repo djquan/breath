@@ -8,6 +8,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
   events: {
     'blur #form-task': 'submitTask',
     'click .task_list': 'showTask', 
+    'click .complete-check': 'toggleComplete',
   },
 
   render: function(){
@@ -17,6 +18,16 @@ Breath.Views.TaskIndex = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     return this;
+  },
+
+  toggleComplete: function(event){
+    var task = this.collection.get($(event.currentTarget).data('id'));
+    var completedVar = task.get('completed') ? false : true
+    task.save('completed', completedVar, {
+      success: function(obj){
+        Backbone.history.navigate('tasks/' + obj.id, {trigger: true})
+      }
+    })
   },
 
   showTask: function(event){

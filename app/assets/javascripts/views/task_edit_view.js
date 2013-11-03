@@ -16,7 +16,6 @@ Breath.Views.TaskEdit = Backbone.View.extend({
       success: function(obj){
       }
     })
-    
   },
 
   updateTask: function(event){
