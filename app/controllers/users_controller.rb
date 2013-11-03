@@ -4,13 +4,13 @@ class UsersController < ApplicationController
     render :new
   end
 
-  def show
-    render json: current_user
-  end
+  # def show
+  #   render json: current_user
+  # end
 
   def index
-    current = User.includes(:projects).find(current_user.id)
-    render json: current, include: :projects
+    @current = User.find(current_user.id)
+    render 'users/show' #json: current, include: :projects
   end
   
   def create

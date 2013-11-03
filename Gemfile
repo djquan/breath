@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'backbone-on-rails'
+gem 'rabl'
 
 group :doc do
   gem 'sdoc', require: false
