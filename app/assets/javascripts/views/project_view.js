@@ -25,7 +25,7 @@ Breath.Views.ProjectView = Backbone.View.extend({
     var completedVar = task.get('completed') ? false : true
     task.save('completed', completedVar, {
       success: function(obj){
-        Backbone.history.navigate('tasks/' + obj.id, {trigger: true})
+        Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/' + obj.id, {trigger: true})
       }
     })
   },
