@@ -2,7 +2,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
   template: JST['tasks/index'],
 
   initialize: function(){
-    this.listenTo(this.collection, "add remove sync", this.render);
+    this.listenTo(this.collection, "add remove change sync", this.render);
   },
 
   events: {
@@ -20,20 +20,34 @@ Breath.Views.TaskIndex = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   },
-
+// I really need to refactor this.
   toggleComplete: function(event){
-    var task = this.collection.get($(event.currentTarget).data('id'));
+    var taskId = $(event.currentTarget).data('id')
+    var task = this.collection.get(taskId);
+
     var completedVar = task.get('completed') ? false : true
     task.save('completed', completedVar, {
       success: function(obj){
-        Backbone.history.navigate('tasks/' + obj.id, {trigger: true})
+        if (obj.get('project_id') !== 0 && obj.get('project_id')) {
+          var project = Breath.user.projects().get(obj.get('project_id'));
+          project.tasks().get(taskId).save('completed', completedVar)
+          Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/'+ obj.id, {trigger: true})
+        } else {
+          Backbone.history.navigate('tasks/' + obj.id, {trigger: true})
+        }
       }
     })
   },
 
   showTask: function(event){
     var destination = $(event.currentTarget).data('id');
-    Backbone.history.navigate('tasks/' + destination, {trigger: true})
+    var obj = this.collection.get(destination);
+    if (obj.get('project_id') !== 0 && obj.get('project_id')) {
+      var project = Breath.user.projects().get(obj.get('project_id'));
+      Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/'+ obj.id, {trigger: true})
+    } else {
+      Backbone.history.navigate('tasks/' + obj.id, {trigger: true})
+    }
   },
 
   submitTask: function(event){

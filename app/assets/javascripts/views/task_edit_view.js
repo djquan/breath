@@ -14,6 +14,9 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     var completedVar = this.model.get('completed') ? false : true
     this.model.save('completed', completedVar, {
       success: function(obj){
+        if (obj.get('project_id') !== 0 && obj.get('project_id')){
+          Breath.user.tasks().get(obj.id).save('completed', completedVar);
+        }
       }
     })
   },
@@ -23,6 +26,9 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     var payload = $(event.currentTarget).val();
     this.model.save(target, payload, {
       success: function(obj){
+        if (obj.get('project_id') !== 0 && obj.get('project_id')){
+          Breath.user.tasks().get(obj.id).save(target, payload);
+        }
       }
     })
   },
