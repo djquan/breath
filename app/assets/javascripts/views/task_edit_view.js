@@ -38,7 +38,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     this.model.destroy({
       success: function(obj){
         Breath.user.fetch();
-        $('.task-detail').html('')
+        $('.task-detail').html('<h5> Successfully Removed </h5>')
       }
     });
   },

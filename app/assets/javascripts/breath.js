@@ -14,8 +14,3 @@ window.Breath = {
     })
   }
 };
-
-// $(document).ready(function(){
-//   Breath.initialize();
-// });
-//
