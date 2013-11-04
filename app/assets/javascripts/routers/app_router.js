@@ -18,7 +18,6 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
     var taskEditPage = new Breath.Views.TaskEdit({
       model: Breath.user.tasks().get(id)
     });
-
     this._swapTaskView(taskEditPage)
   },
 
@@ -26,11 +25,9 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
     var sidebar = new Breath.Views.SidebarView({
       model: Breath.user
     });
-    
     var taskIndex = new Breath.Views.TaskIndex({
       collection: Breath.user.tasks()
     });
-
     $('.app-sidebar').html(sidebar.render().$el);
     this._swapMainView(taskIndex);
   },
@@ -39,7 +36,6 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
     var projectPage = new Breath.Views.ProjectView({
       model: Breath.user.projects().get(id)
     });
-
     this._swapMainView(projectPage);
   },
 
