@@ -20,6 +20,7 @@ Breath.Views.SidebarView = Backbone.View.extend({
   },
 
   render: function(){
+    var that = this;
     var renderedContent = this.template({
       user: this.model
     });
@@ -27,7 +28,17 @@ Breath.Views.SidebarView = Backbone.View.extend({
     var personalProjects = new Breath.Views.PersonalProjects({
       collection: this.model.projects()
     });
+
     this.$el.html(renderedContent);
+
+    this.model.teams().each(function(team){
+      var teamPage = new Breath.Views.TeamProject({
+        model: team
+      });
+
+      that.$el.append(teamPage.render().$el);
+    }),
+
     this.$el.append(personalProjects.render().$el);
     return this;
   }
