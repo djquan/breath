@@ -3,11 +3,13 @@ Breath.Views.SidebarView = Backbone.View.extend({
 
   initialize: function(){
     this.listenTo(this.model, "add remove sync", this.render);
+    this.listenTo(this.model.teams(), "add remove sync", this.render);
   },
 
   events: {
     'click .task_index': "showTaskIndex",
     'click .project-link': "showDetail",
+    'blur #new-team': "addTeam"
   },
 
   showDetail: function(event){
@@ -17,6 +19,16 @@ Breath.Views.SidebarView = Backbone.View.extend({
 
   showTaskIndex: function(event){
     Backbone.history.navigate('', {trigger: true})
+  },
+
+  addTeam: function(event){
+    var teamName = $(event.currentTarget).val();
+    this.model.teams().create({
+      name: teamName }, {
+      success: function(obj){
+        console.log(obj)
+      }
+    });
   },
 
   render: function(){

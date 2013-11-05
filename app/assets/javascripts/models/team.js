@@ -1,5 +1,5 @@
 Breath.Models.Team = Backbone.Model.extend({
-  urlRoot: 'api/team',
+  urlRoot: 'api/teams',
   projects: function(){
     if (!this._projects) {
       this._projects = new Breath.Collections.Projects([], { user: this});
