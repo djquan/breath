@@ -3,6 +3,8 @@
 <ul>
 <% comments.each(function(comment){ %>
 <% var commenter = Breath.users.get(comment.get('commenter_id'))%>
-<li> <%= comment.escape('body') %> ~ <%= commenter.get('name') %> </li>
+<li> <%= comment.escape('body') %> ~ <%= commenter.escape('name') %> </li>
 <% }) %>
 </ul>
+
+<textarea placeholder="Comment..." class="comment-box"></textarea>
