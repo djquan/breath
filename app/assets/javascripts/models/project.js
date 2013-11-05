@@ -10,7 +10,6 @@ Breath.Models.Project = Backbone.Model.extend({
 
   parse: function(attributes){
     this.tasks().reset(attributes.tasks);
-    delete attributes.tasks;
     return attributes
   }
 })
