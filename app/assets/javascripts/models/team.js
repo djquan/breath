@@ -9,6 +9,7 @@ Breath.Models.Team = Backbone.Model.extend({
 
   parse: function(attributes){
     this.projects().reset(attributes.projects, {parse: true});
+    Breath.user.projects().add(attributes.projects, {parse: true});
     delete attributes.projects;
     return attributes;
   }

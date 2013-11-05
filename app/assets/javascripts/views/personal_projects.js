@@ -7,12 +7,6 @@ Breath.Views.PersonalProjects = Backbone.View.extend({
 
   events: {
     'blur #form-personal': 'submitPersonal',
-    'click .project-link': "showDetail",
-  },
-
-  showDetail: function(event){
-    var selected = $(event.currentTarget).data("id")
-    Backbone.history.navigate('projects/' + selected, {trigger: true})
   },
 
   render: function(){
