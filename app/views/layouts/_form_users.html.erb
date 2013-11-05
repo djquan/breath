@@ -1,8 +1,6 @@
-  <% flash[:errors].try(:each) do |error| %>
-    <div class="alert">
-    <%= error %> 
-  </div>
-  <% end %> 
+<% flash[:errors].try(:each) do |error| %>
+  <div class="alert"> <%= error %> </div>
+<% end %> 
 
 <br>
 <form action="<%= action %>" method="POST" accept-charset="utf-8">

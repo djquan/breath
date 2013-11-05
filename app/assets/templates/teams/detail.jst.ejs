@@ -1,6 +1,15 @@
 <h5> <%= team.escape('name') %></h5>
 <br><h6 class="member-list"> Member List</h6>
-<% team.get('users').forEach(function(member){ %>
-  <p class="member-name"><%= member.name %></p>
+<% team.users().each(function(member){ %>
+  <p class="member-name"><%= member.get('name') %></p>
 <% }) %>
 <br>
+
+<select class="add-users">
+  <option></option>
+<% users.each(function(user){ %>
+  <% if (user.id === Breath.user.id) { return } %>
+  <% if (team.users().get(user.id))  { return } %>
+  <option value="<%= user.id %>"><%= user.escape('name') %></option>
+<% }) %>
+</select>
