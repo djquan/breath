@@ -22,6 +22,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
     return this;
   },
 // I really need to refactor this.
+// Write a method to check if an object belongs to a project
   toggleComplete: function(event){
     var taskId = $(event.currentTarget).data('id')
     var task = this.collection.get(taskId);

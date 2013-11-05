@@ -33,7 +33,8 @@ Breath.Views.SidebarView = Backbone.View.extend({
 
     this.model.teams().each(function(team){
       var teamPage = new Breath.Views.TeamProject({
-        model: team
+        model: team,
+        collection: team.projects()
       });
 
       that.$el.append(teamPage.render().$el);
