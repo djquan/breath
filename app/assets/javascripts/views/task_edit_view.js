@@ -47,7 +47,6 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     var renderedContent = this.template({
       task: this.model
     });
-
     var comments = new Breath.Views.CommentView({
       collection: this.model.comments()
     });

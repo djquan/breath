@@ -13,7 +13,6 @@ Breath.Views.CommentView = Backbone.View.extend({
     var renderedContent = this.template({
       comments: this.collection
     });
-
     this.$el.html(renderedContent);
     return this;
   }

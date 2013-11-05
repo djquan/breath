@@ -1,1 +1,8 @@
-<h5> Commmments </h5>
+<br><br>
+<h5> Comments </h5>
+<ul>
+<% comments.each(function(comment){ %>
+<% var commenter = Breath.users.get(comment.get('commenter_id'))%>
+<li> <%= comment.escape('body') %> ~ <%= commenter.get('name') %> </li>
+<% }) %>
+</ul>
