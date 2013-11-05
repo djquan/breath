@@ -6,13 +6,7 @@ Breath.Views.SidebarView = Backbone.View.extend({
   },
 
   events: {
-    'click .project-link': "showDetail",
     'click .task_index': "showTaskIndex"
-  },
-
-  showDetail: function(event){
-    var selected = $(event.currentTarget).data("id")
-    Backbone.history.navigate('projects/' + selected, {trigger: true})
   },
 
   showTaskIndex: function(event){

@@ -5,7 +5,12 @@ Breath.Views.TeamProject = Backbone.View.extend({
   },
 
   events: {
+    'click .project-link': "showDetail",
+  },
 
+  showDetail: function(event){
+    var selected = $(event.currentTarget).data("id")
+    Backbone.history.navigate('teams/' + this.model.id + '/projects/' + selected, {trigger: true})
   },
 
   render: function(){
