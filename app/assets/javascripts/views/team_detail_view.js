@@ -7,7 +7,8 @@ Breath.Views.TeamDetail = Backbone.View.extend({
   },
 
   events: {
-    'change .add-users': 'addUser'
+    'change .add-users': 'addUser',
+    'click .leave': 'leaveTeam'
   },
 
   addUser: function(event){
@@ -18,9 +19,21 @@ Breath.Views.TeamDetail = Backbone.View.extend({
       url: "api/teams/add_user",
       data:  { user_id: selectedUserID, 
                team_id: this.model.id },
-
       success: function(obj){
         that.model.users().add(obj);
+      }
+    })
+  },
+
+  leaveTeam: function(event){
+    var that = this;
+    $.ajax({
+      type: "POST",
+      url: "api/teams/leave_team",
+      data: { team_id: this.model.id },
+      success: function(obj){
+        Breath.user.teams().remove(that.model);
+        Backbone.history.navigate('', {trigger:true})
       }
     })
   },

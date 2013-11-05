@@ -8,6 +8,7 @@ Breath::Application.routes.draw do
     resources :tasks, only: [:index, :show, :create, :destroy, :update]
     resources :teams, only: [:create, :destroy]
     post "teams/add_user", to: "teams#add_user"
+    post "teams/leave_team", to: "teams#leave_team"
   end
 
   root to: "sessions#new"

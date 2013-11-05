@@ -10,6 +10,11 @@ class Api::TeamsController < ApplicationController
     render json: user
   end
 
+  def leave_team
+    current_user.teams.delete(params[:team_id])
+    render json: current_user
+  end
+
   private 
   def team_params
     params.require(:team).permit(:name)

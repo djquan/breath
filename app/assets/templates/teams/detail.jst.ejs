@@ -12,4 +12,5 @@
   <% if (team.users().get(user.id))  { return } %>
   <option value="<%= user.id %>"><%= user.escape('name') %></option>
 <% }) %>
-</select>
+</select><br><br>
+<button class='leave btn btn-block btn-lg btn-danger'>Leave team</button>
