@@ -27,7 +27,11 @@ Breath.Views.SidebarView = Backbone.View.extend({
     this.model.teams().create({
       name: teamName }, {
       success: function(obj){
-        Breath.user.fetch()
+        Breath.user.fetch({
+          success: function(){
+            Backbone.history.navigate('teams/' + obj.id, {trigger: true})
+          }
+        });
       }
     });
   },
