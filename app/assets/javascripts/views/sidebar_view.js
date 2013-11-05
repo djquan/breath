@@ -23,10 +23,11 @@ Breath.Views.SidebarView = Backbone.View.extend({
 
   addTeam: function(event){
     var teamName = $(event.currentTarget).val();
+    if (teamName === ""){ return }
     this.model.teams().create({
       name: teamName }, {
       success: function(obj){
-        console.log(obj)
+        Breath.user.fetch()
       }
     });
   },

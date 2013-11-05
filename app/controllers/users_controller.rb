@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @current = User.find(current_user.id)
-    render 'users/show'
+    @users = User.all
+    render 'users/index'
   end
   
   def create

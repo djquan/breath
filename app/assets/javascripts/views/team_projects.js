@@ -6,6 +6,7 @@ Breath.Views.TeamProject = Backbone.View.extend({
 
   events: {
     'blur #form-team': 'submitPersonal',
+    'click .sidebar-header': 'showTeamPage' 
   },
 
   render: function(){
@@ -15,6 +16,10 @@ Breath.Views.TeamProject = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     return this;
+  },
+
+  showTeamPage: function(){
+    Backbone.history.navigate('/teams/' + this.model.id, {trigger: true})
   },
 
   submitPersonal: function(event){
