@@ -17,6 +17,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'backbone-on-rails'
 gem 'rabl'
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+gem 'less-rails'
 
 group :doc do
   gem 'sdoc', require: false

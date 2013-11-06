@@ -1,11 +1,7 @@
 <form>
   <input type='text' name="name" class="form-control"
         value="<%= task.escape('name')%>"><br><br>
-  <!-- <input type='text' name='description' --> 
-  <!--        value="<%= task.escape('description') %>"><br> -->
-
   <textarea name='description' class='form-description form-control'><%= task.escape('description') %></textarea>
-
   <br><input type='date' name='due' value="<%= task.escape('due')%>"
        class="form-control">
 </form>
