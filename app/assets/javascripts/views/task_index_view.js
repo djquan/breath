@@ -2,7 +2,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
   template: JST['tasks/index'],
 
   initialize: function(){
-    this.listenTo(this.collection, "add remove change sync", this.render);
+    this.listenTo(this.collection, "add remove change sync refresh", this.render);
     this.listenTo(Breath.user, 'sync', this.render)
   },
 
@@ -26,7 +26,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
   toggleComplete: function(event){
     var taskId = $(event.currentTarget).data('id')
     var task = this.collection.get(taskId);
-
+    var that = this;
     var completedVar = task.get('completed') ? false : true
     task.save('completed', completedVar, {
       success: function(obj){
@@ -37,6 +37,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
         } else {
           Backbone.history.navigate('tasks/' + obj.id, {trigger: true})
         }
+        that.collection.sort();
       }
     })
   },
@@ -54,12 +55,14 @@ Breath.Views.TaskIndex = Backbone.View.extend({
 
   submitTask: function(event){
     var name = $(event.currentTarget).val();
-    if (name === "") { return  };
+    var that = this;
+    if (name === "") { return };
     this.collection.create({
       name: name
     }, {
       success: function(obj){
         Backbone.history.navigate('/tasks/' + obj.id, {trigger: true})
+        that.collection.sort();
       }
     })
   }

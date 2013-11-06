@@ -20,8 +20,10 @@ Breath.Views.TaskEdit = Backbone.View.extend({
       success: function(obj){
         if (obj.get('project_id') !== 0 && obj.get('project_id')){
           Breath.user.tasks().get(obj.id).save('completed', completedVar);
+          Breath.user.tasks().sort();
         }
         that.model.fetch({silent: true});
+        that.model.collection.sort();
       }
     })
   },

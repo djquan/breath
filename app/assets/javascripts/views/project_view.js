@@ -23,10 +23,12 @@ Breath.Views.ProjectView = Backbone.View.extend({
   toggleComplete: function(event){
     var task = this.model.tasks().get($(event.currentTarget).data('id'));
     var completedVar = task.get('completed') ? false : true
+    var that = this;
     task.save('completed', completedVar, {
       success: function(obj){
         Breath.user.fetch();
         Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/' + obj.id, {trigger: true})
+        that.model.tasks().sort();
       }
     })
   },
@@ -38,6 +40,7 @@ Breath.Views.ProjectView = Backbone.View.extend({
 
   submitTask: function(event){
     var name = $(event.currentTarget).val();
+    var that = this;
     if (name === "") { return  };
     this.model.tasks().create({
       name: name,
@@ -46,6 +49,7 @@ Breath.Views.ProjectView = Backbone.View.extend({
       success: function(obj){
         Breath.user.tasks().add(obj);
         Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/' + obj.id, {trigger: true})
+        that.model.tasks().sort();
       }
     })
   }
