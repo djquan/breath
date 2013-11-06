@@ -3,12 +3,23 @@
 <% tasks.each(function(task){ %>
 <% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
 <% var checkedTask = task.get('completed') ? 'checked' : '' %>
-<input type='checkbox' <%= checkedTask %> 
-       class="complete-check" data-id="<%= task.id %>">
-
-<span class="task_list <%= completeClass %>" data-id="<%= task.id %>">
-   <%= task.escape('name') %>
-</span><br>
+<% var labelTask = task.get('completed') ? 'label-success' : 'label-important' %>
+<div class="row">
+  <div class="span8 offset1">
+    <input type='checkbox' <%= checkedTask %> 
+           class="complete-check" data-id="<%= task.id %>">
+    <span class="task_list <%= completeClass %>" data-id="<%= task.id %>">
+       <%= task.escape('name') %>
+    </span>
+  </div>
+  <div class="span2 offset1">
+    <%if (task.get('due')){ %>
+    <span class="due-date label <%= labelTask %>">
+      <%= (new Date(task.get('due')).toLocaleDateString()) %> 
+    </span><br>
+    <% }%>
+  </div>
+</div>
 <% }) %>
 
 <br>
