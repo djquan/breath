@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :team_lists
   has_many :teams, through: :team_lists
   has_many :comments, foreign_key: :commenter_id
+  has_many :assignments
+  has_many :assigned_tasks, through: :assignments, source: :task
 
   def password=(password)
     @password = password

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @current = User.find(current_user.id)
+    @assigned_tasks = @current.assigned_tasks
     render 'users/show' 
   end
 

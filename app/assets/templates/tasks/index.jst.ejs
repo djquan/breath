@@ -13,6 +13,10 @@
     </span>
   </div>
   <div class="span2 offset1">
+    <% if (task.get('creator_id') !== Breath.user.id){ %>
+      <span class="label label-warning">Assigned </span>
+    <% } %>
+
     <%if (task.get('due')){ %>
     <span class="due-date label <%= labelTask %>">
       <%= (new Date(task.get('due')).toLocaleDateString()) %> 

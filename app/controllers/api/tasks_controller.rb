@@ -13,7 +13,7 @@ class Api::TasksController < ApplicationController
 
   def update
     task = Task.find(params[:id])
-    if current_user == task.creator
+    if (current_user == task.creator) || (task.assigned_users.include?(current_user))
       if task.update_attributes(task_params)
         render json: task
       else
