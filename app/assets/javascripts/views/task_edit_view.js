@@ -48,7 +48,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     this.model.destroy({
       success: function(obj){
         Breath.user.fetch();
-        $('.task-detail').html('<h5> Successfully Removed </h5>')
+        $('.task-detail').html('<div><h5> Successfully Removed </h5></div>')
       }
     });
   },
@@ -60,7 +60,8 @@ Breath.Views.TaskEdit = Backbone.View.extend({
 
   render: function(){
     var renderedContent = this.template({
-      task: this.model
+      task: this.model,
+      project: this.collection
     });
     this.comments = new Breath.Views.CommentView({
       model: this.model,

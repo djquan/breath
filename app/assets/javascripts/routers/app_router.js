@@ -17,7 +17,8 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
   showProjectTaskEditPage: function(proj, id){
     var project = Breath.user.projects().get(proj);
     var taskEditPage = new Breath.Views.TaskEdit({
-      model: project.tasks().get(id)
+      model: project.tasks().get(id),
+      collection: project
     });
     this._swapTaskView(taskEditPage)
   },

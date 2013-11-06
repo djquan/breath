@@ -1,4 +1,9 @@
 <form>
+  <% if(project){ %>
+    <span class="label label-info"><%= project.get('name') %></span>
+  <% } else { %>
+    <span class="label label-success">Personal</span>
+    <% } %><br><br>
   <input type='text' name="name" class="form-control"
         value="<%= task.escape('name')%>"><br><br>
   <textarea name='description' class='form-description form-control'><%= task.escape('description') %></textarea>
@@ -6,7 +11,11 @@
        class="form-control">
 </form>
 <br><br>
-
+<% var creatorName = Breath.users.get(task.get('creator_id')).get('name') %>
+<% var creationDate = new Date(task.get('created_at'))%>
+<br>
 <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
 <button class="completed btn btn-primary"><%= com %></button>
 <button class="remove btn btn-danger">Remove Task</button>
+<br><br>
+<span class="label label-inverse"><%= creatorName %></span> created this task on <%= creationDate.toLocaleDateString() + ' at ' + creationDate.toLocaleTimeString() %>
