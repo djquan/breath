@@ -3,6 +3,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
 
   initialize: function(){
     this.listenTo(this.model, "add remove sync change", this.render);
+    this.model.fetch({silent: true})
   },
 
   events: {

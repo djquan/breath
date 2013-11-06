@@ -11,9 +11,10 @@ Breath.Views.CommentView = Backbone.View.extend({
 
   sendComment: function(event){
     var that = this;
+    var comment = $(event.currentTarget).val();
     if (comment === '') { return }
     var comment = new Breath.Models.Comment({
-      body: $(event.currentTarget).val(),
+      body: comment,
       task_id: this.model.id
     });
 
