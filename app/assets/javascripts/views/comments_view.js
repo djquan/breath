@@ -2,7 +2,7 @@ Breath.Views.CommentView = Backbone.View.extend({
   template: JST['tasks/comments'],
 
   initialize: function(){
-    this.listenTo(this.collection, "add remove sync change", this.render)
+    this.listenTo(this.collection, "add remove sync change", this.render);
   },
 
   events: {

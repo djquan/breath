@@ -43,16 +43,21 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     });
   },
 
+  remove: function(){
+    this.comments.remove();
+    Backbone.View.prototype.remove.call(this);
+  },
+
   render: function(){
     var renderedContent = this.template({
       task: this.model
     });
-    var comments = new Breath.Views.CommentView({
+    this.comments = new Breath.Views.CommentView({
       model: this.model,
       collection: this.model.comments()
     });
     this.$el.html(renderedContent);
-    this.$el.append(comments.render().$el)
+    this.$el.append(this.comments.render().$el)
     return this;
   }
 })

@@ -6,6 +6,11 @@ class Api::TasksController < ApplicationController
     render json: task
   end
 
+  def show
+    @task = Task.find(params[:id])
+    render 'api/tasks/show'
+  end
+
   def update
     task = Task.find(params[:id])
     if current_user == task.creator
