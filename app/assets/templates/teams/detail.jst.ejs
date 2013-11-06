@@ -5,8 +5,8 @@
 <% }) %>
 <br>
 
-<select class="add-users">
-  <option></option>
+<select class="form-control add-users">
+  <option value="">Add a team member...</option>
 <% users.each(function(user){ %>
   <% if (user.id === Breath.user.id) { return } %>
   <% if (team.users().get(user.id))  { return } %>

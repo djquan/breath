@@ -3,26 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body{
-  background: #DDE4EA;
+  background: #95a5a6;
 }
 
+.project-link:hover{ color: #3498db; }
+.task_index:hover{ color: #3498db; }
+.sidebar-header:hover{ color: #3498db; }
+.task_list:hover{ color: #3498db; }
+
+
 .index {
-  background: white;
+  background: #ecf0f1;
   border-radius: 5%;
   padding: 10px;
   margin-top: 20px;
 }
 
 .task-detail{
-  background: white;
+  background: #ecf0f1;
   border-radius: 5%;
   padding: 10px;
   margin-top: 20px;
   margin-right: 10px;
 }
 
-.app-sidebar{
-  margin-left: 10px;
+.app-sidebar{ 
+  background: #ecf0f1; 
+  margin-top: 20px;
+  border-radius: 2%;
+}
+
+.app-sidebar div{
+  padding: 10px 20px 20px 3px;
 }
 
 .completed-task{

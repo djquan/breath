@@ -14,6 +14,7 @@ Breath.Views.TeamDetail = Backbone.View.extend({
   addUser: function(event){
     var that = this;
     var selectedUserID = $(event.currentTarget).val();
+    if (selectedUserID === "") { return  }
     $.ajax({
       type: "POST",
       url: "api/teams/add_user",

@@ -1,8 +1,8 @@
-<h5 class="sidebar-header"> <%= team.escape('name') %></h5>
+<h6 class="sidebar-header"> <%= team.escape('name') %></h6>
 
 <% team.projects().each(function(project){ %>
   <span class="project-link" data-id="<%=project.id%>">
     <%= project.escape('name') %> 
   </span> <br>
 <% }) %>
-<input placeholder="Team project..." type="text" id="form-team">
+<input placeholder="Team project..." type="text" id="form-team" class="form-control">

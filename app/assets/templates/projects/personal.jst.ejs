@@ -1,4 +1,4 @@
-<h5 class="sidebar-header"> Personal</h5>
+<h6 class="sidebar-header"> Personal</h6>
 <% projects.each(function(project){ %>
 <% if (project.get('team_id') === 0) {  %>
     <span class="project-link" data-id="<%=project.id%>">
@@ -6,4 +6,4 @@
     </span> <br>
 <% } %>
 <% }) %>
-<input placeholder="Personal project..." type="text" id="form-personal">
+<input placeholder="Personal project..." type="text" id="form-personal" class="form-control">

@@ -8,6 +8,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
 
   events: {
     'blur input': 'updateTask',
+    'blur .form-description': 'updateTask',
     'click .completed': 'toggleComplete',
     'click .remove': 'removeTask'
   },

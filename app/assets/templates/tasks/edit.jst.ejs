@@ -1,12 +1,16 @@
 <form>
-  <input type='text' name="name" value="<%= task.escape('name')%>"><br><br>
-  <input type='text' name='description' 
-         value="<%= task.escape('description') %>"><br>
+  <input type='text' name="name" class="form-control"
+        value="<%= task.escape('name')%>"><br><br>
+  <!-- <input type='text' name='description' --> 
+  <!--        value="<%= task.escape('description') %>"><br> -->
 
-  <br><input type='date' name='due' value="<%= task.escape('due')%>">
+  <textarea name='description' class='form-description form-control'><%= task.escape('description') %></textarea>
+
+  <br><input type='date' name='due' value="<%= task.escape('due')%>"
+       class="form-control">
 </form>
 <br><br>
 
 <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
-<button class="completed"><%= com %></button>
-<button class="remove">Remove Task</button>
+<button class="completed btn btn-primary"><%= com %></button>
+<button class="remove btn btn-danger">Remove Task</button>
