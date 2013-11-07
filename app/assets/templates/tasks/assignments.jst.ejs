@@ -10,13 +10,13 @@
       <option value="<%= user.id %>"><%= user.escape('name') %></option>
     <% }) %>
   </select><br><br>
-<button class="remove btn btn-wide btn-danger">Remove Task</button><br><br>
 <% } %>
 
 <% a_users.each(function(user){ %>
 <span class="label label-info"><%= user.get('name') %></span>
 <% }) %>
 <br><br>
+<button class="remove btn btn-wide btn-danger">Remove Task</button><br><br>
 
 <span class="label label-inverse"><%= creatorName %></span> created this task on <%= creationDate.toLocaleDateString() + ' at ' + creationDate.toLocaleTimeString() %>
 <br>
