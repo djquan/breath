@@ -16,8 +16,8 @@ Tech used:
     * Tasks can be organized in projects (or not!)
     * Projects can belong to a team (shared) or yourself (private)
 * Tasks
-    * Tasks can be assigned to any member.  Tasks can be assigned to multiple users.
-    * Tasks
+    * Tasks can be assigned to any member. Tasks can be assigned to multiple users.
+    * Tasks can have subtasks. Subtasks can have subtask (on and on forever). 
     * Users can comment on tasks that they are assigned to. 
 
 ##Upcoming features
@@ -27,6 +27,10 @@ Tech used:
 * Tags
 * Favorites
 * Team message board
+
+##Interesting challenges and their solutions.
+
+Todo
 
 ##Known Issues
 
