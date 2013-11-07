@@ -3,7 +3,8 @@ Breath.Views.TaskIndex = Backbone.View.extend({
 
   initialize: function(){
     this.listenTo(this.collection, "add remove change sync refresh", this.render);
-    this.listenTo(Breath.user, 'sync', this.render)
+    this.listenTo(Breath.user, 'sync', this.render);
+    this.collection.sort({silent: true});
   },
 
   events: {
