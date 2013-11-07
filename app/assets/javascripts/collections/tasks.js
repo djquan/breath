@@ -3,6 +3,6 @@ Breath.Collections.Tasks = Backbone.Collection.extend({
   url:    '/api/tasks',
   comparator: function(task){
     var due = task.get('due') || "999999999999999999999999999999999"
-    return [task.get('completed'), due]
+    return [task.get('completed'), task.get('order'),  due]
   }
 })

@@ -1,11 +1,11 @@
-<h2><%= project.escape('name') %> </h2>
-  
+<h2><%= project.escape('name')%></h2>
+<div id="sortable">  
 <% tasks.each(function(task){ %>
 <% if (task.get('parent_id')) { return } %>
 <% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
 <% var checkedTask = task.get('completed') ? 'checked' : '' %>
 <% var labelTask = task.get('completed') ? 'label-success' : 'label-important' %>
-<div class="row">
+<div class="row tasks" data-id= "<%= task.id %>">
   <div class="span8 offset1">
     <input type='checkbox' <%= checkedTask %> 
            class="complete-check" data-id="<%= task.id %>">
@@ -14,9 +14,6 @@
     </span>
   </div>
   <div class="span2 offset1">
-    <% if (task.get('creator_id') !== Breath.user.id){ %>
-      <span class="label label-warning">Assigned </span>
-    <% } %>
 
     <%if (task.get('due')){ %>
     <span class="due-date label <%= labelTask %>">
@@ -26,6 +23,21 @@
   </div>
 </div>
 <% }) %>
-
+</div>
 <br>
 <input placeholder="Task..." type="text" id="form-task" class="form-control">
+
+<script>
+$(function(){
+  $('#sortable').sortable({
+    update: function(event, ui){
+      $('.tasks', this).each(function(i){
+        var task_id = $(this).data('id');
+        var task = Breath.user.tasks().get(task_id);
+        task.save('order', i, {silent: true});
+      })
+      Breath.user.tasks().sort();
+    }
+  });
+});
+</script>

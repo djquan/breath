@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106222843) do
+ActiveRecord::Schema.define(version: 20131107215905) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20131106222843) do
     t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order"
   end
 
   add_index "tasks", ["creator_id"], name: "index_tasks_on_creator_id"
