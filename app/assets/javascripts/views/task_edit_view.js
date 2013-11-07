@@ -10,7 +10,19 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     'blur .update-task': 'updateTask',
     'blur .form-description': 'updateTask',
     'click .completed': 'toggleComplete',
-    'click .remove': 'removeTask'
+    'click .remove': 'removeTask',
+    'click .parent-task': 'showParent'
+  },
+
+  showParent: function(event){
+    var destination = $(event.currentTarget).data('id');
+    var obj = Breath.user.tasks().get(destination);
+    if (obj.get('project_id') !== 0 && obj.get('project_id')) {
+      var project = Breath.user.projects().get(obj.get('project_id'));
+      Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/'+ obj.id, {trigger: true})
+    } else {
+      Backbone.history.navigate('tasks/' + obj.id, {trigger: true})
+    }
   },
 
   toggleComplete: function(event){

@@ -2,8 +2,13 @@
   <% if(project){ %>
     <span class="label label-info"><%= project.get('name') %></span>
   <% } else { %>
-    <span class="label label-success">Personal</span>
-    <% } %><br><br>
+    <span class="label label-info">Personal</span>
+  <% } %>
+  <% if (task.get('parent_id')) { %>
+    <span class="label label-success parent-task" data-id="<%=task.get('parent_id')%>">
+      <%= Breath.user.tasks().get(task.get('parent_id')).get('name') %>
+    </span>
+  <% } %><br><br>
   <input type='text' name="name" class="update-task"
         value="<%= task.escape('name')%>"><br><br>
   <textarea name='description' class='form-description form-control'><%= task.escape('description') %></textarea>
