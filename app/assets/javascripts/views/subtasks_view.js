@@ -4,6 +4,7 @@ Breath.Views.SubtaskView = Backbone.View.extend({
   initialize: function(){
     this.listenTo(this.collection, "add remove change sync", this.render);
     this.listenTo(this.model, "add remove sync change", this.render);
+    this.collection.sort( {silent: true} );
   },
 
   events: {
@@ -38,7 +39,7 @@ Breath.Views.SubtaskView = Backbone.View.extend({
           project.tasks().add(obj);
         }
         that.model.fetch();
-        Breath.user.tasks().sort();
+        that.collection.sort();
       }
     })
   },

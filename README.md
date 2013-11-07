@@ -10,13 +10,26 @@ Tech used:
 
 ##Features
 
-Todo.
+* Teams
+    * Users can be invited to any team. 
+* Projects
+    * Tasks can be organized in projects (or not!)
+    * Projects can belong to a team (shared) or yourself (private)
+* Tasks
+    * Tasks can be assigned to any member.  Tasks can be assigned to multiple users.
+    * Tasks
+    * Users can comment on tasks that they are assigned to. 
 
 ##Upcoming features
 
-Todo.
+* File Attachments
+* Order by priority(jquery -UI)
+* Tags
+* Favorites
+* Team message board
 
 ##Known Issues
 
+Todo
 
 [![Code Climate](https://codeclimate.com/github/djquan/breath.png)](https://codeclimate.com/github/djquan/breath)
