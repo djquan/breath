@@ -7,7 +7,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
   },
 
   events: {
-    'blur input': 'updateTask',
+    'blur .update-task': 'updateTask',
     'blur .form-description': 'updateTask',
     'click .completed': 'toggleComplete',
     'click .remove': 'removeTask'
@@ -67,7 +67,8 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     });
 
     this.subtasks = new Breath.Views.SubtaskView({
-      model: this.model
+      model: this.model,
+      collection: this.model.subtasks()
     });
 
     this.assignments = new Breath.Views.AssignmentView({

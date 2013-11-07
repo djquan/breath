@@ -1,1 +1,27 @@
-<h5> Hello </h5>
+<h5> Subtasks </h5>
+
+<% subtasks.each(function(subtask){ %>
+  <% var completeClass = subtask.get('completed') ? 'completed-task' : 'incomplete-task' %>
+  <% var checkedTask = subtask.get('completed') ? 'checked' : '' %>
+  <% var labelTask = subtask.get('completed') ? 'label-success' : 'label-important' %>
+  <input type='checkbox' <%= checkedTask %> 
+         class="subcomplete-check" data-id="<%= subtask.id %>">
+  <span class="subtask_list <%= completeClass %>" data-id="<%= subtask.id %>">
+     <%= subtask.escape('name') %>
+  </span>
+  <% if (subtask.get('creator_id') !== Breath.user.id){ %>
+    <span class="label label-warning">Assigned </span>
+  <% } %>
+
+  <% if (subtask.get('creator_id') !== Breath.user.id){ %>
+    <span class="label label-warning">Assigned </span>
+  <% } %>
+
+  <%if (subtask.get('due')){ %>
+  <span class="due-date label <%= labelTask %>">
+    <%= (new Date(subtask.get('due')).toLocaleDateString()) %> 
+  </span>
+  <% }%>
+  <br>
+<% }) %>
+<input placeholder="Subtask..." type="text" id="form-task" class="form-control">

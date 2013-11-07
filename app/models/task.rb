@@ -6,4 +6,7 @@ class Task < ActiveRecord::Base
   has_many :comments
   has_many :assignments
   has_many :assigned_users, through: :assignments, source: :user
+
+  belongs_to :parent, class_name: "Task"
+  has_many :subtasks, class_name: "Task", foreign_key: :parent_id
 end

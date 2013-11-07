@@ -3,7 +3,7 @@ Breath.Models.Task = Backbone.Model.extend({
 
   subtasks: function(){
     if (!this._subtasks) {
-      this._subtasks = new Breath.Collections.Subtasks([], { task: this});
+      this._subtasks = new Breath.Collections.Tasks([], { task: this});
     }
     return this._subtasks;
   },
@@ -25,9 +25,10 @@ Breath.Models.Task = Backbone.Model.extend({
   parse: function(attributes){
     this.comments().reset(attributes.comments);
     this.assigned_users().reset(attributes.assigned_users);
-
+    this.subtasks().reset(attributes.subtasks);
     delete attributes.assigned_users
     delete attributes.comments
+    delete attributes.subtasks
     return attributes;
   }
 })

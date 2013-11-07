@@ -4,11 +4,11 @@
   <% } else { %>
     <span class="label label-success">Personal</span>
     <% } %><br><br>
-  <input type='text' name="name" class="form-control"
+  <input type='text' name="name" class="update-task"
         value="<%= task.escape('name')%>"><br><br>
   <textarea name='description' class='form-description form-control'><%= task.escape('description') %></textarea>
   <br><input type='date' name='due' value="<%= task.escape('due')%>"
-       class="form-control">
+       class="update-task">
 </form>
 
 

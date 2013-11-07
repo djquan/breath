@@ -1,6 +1,7 @@
 <h2><%= project.escape('name') %> </h2>
   
 <% tasks.each(function(task){ %>
+<% if (task.get('parent_id')) { return } %>
 <% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
 <% var checkedTask = task.get('completed') ? 'checked' : '' %>
 <% var labelTask = task.get('completed') ? 'label-success' : 'label-important' %>
