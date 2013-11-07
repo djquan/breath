@@ -1,0 +1,21 @@
+<% var creatorName = Breath.users.get(task.get('creator_id')).get('name') %>
+<% var creationDate = new Date(task.get('created_at'))%>
+<% if (task.get('creator_id') === Breath.user.id) { %>
+  <select class="form-control add-users">
+    <option value="">Assign the task.</option>
+    <% var users = Breath.users %>
+    <% users.each(function(user){ %>
+      <% if (user.id === Breath.user.id) { return } %>
+      <% if (a_users.get(user.id)){ return } %>
+      <option value="<%= user.id %>"><%= user.escape('name') %></option>
+    <% }) %>
+  </select><br><br>
+<% } %>
+
+<% a_users.each(function(user){ %>
+<span class="label label-info"><%= user.get('name') %></span>
+<% }) %>
+<br><br>
+
+<span class="label label-inverse"><%= creatorName %></span> created this task on <%= creationDate.toLocaleDateString() + ' at ' + creationDate.toLocaleTimeString() %>
+<br>

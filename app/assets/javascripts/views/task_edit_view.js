@@ -55,6 +55,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
 
   remove: function(){
     this.comments.remove();
+    this.assignments.remove();
     Backbone.View.prototype.remove.call(this);
   },
 
@@ -63,11 +64,19 @@ Breath.Views.TaskEdit = Backbone.View.extend({
       task: this.model,
       project: this.collection
     });
+
+    this.assignments = new Breath.Views.AssignmentView({
+      model: this.model,
+      collection: this.model.assigned_users()
+    });
+
     this.comments = new Breath.Views.CommentView({
       model: this.model,
       collection: this.model.comments()
     });
+
     this.$el.html(renderedContent);
+    this.$el.append(this.assignments.render().$el)
     this.$el.append(this.comments.render().$el)
     return this;
   }

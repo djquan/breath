@@ -8,6 +8,7 @@ class Api::TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @assigned_users = @task.assigned_users
     render 'api/tasks/show'
   end
 
@@ -28,6 +29,13 @@ class Api::TasksController < ApplicationController
     task = Task.find(params[:id])
     task.destroy
     render json: task
+  end
+
+  def assign_user
+    task = Task.find(params[:task_id])
+    user = User.find(params[:user])
+    task.assigned_users << user
+    render json: user
   end
 
   private

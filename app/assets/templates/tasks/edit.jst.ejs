@@ -10,12 +10,9 @@
   <br><input type='date' name='due' value="<%= task.escape('due')%>"
        class="form-control">
 </form>
-<br><br>
-<% var creatorName = Breath.users.get(task.get('creator_id')).get('name') %>
-<% var creationDate = new Date(task.get('created_at'))%>
-<br>
+
+
 <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
 <button class="completed btn btn-primary"><%= com %></button>
 <button class="remove btn btn-danger">Remove Task</button>
 <br><br>
-<span class="label label-inverse"><%= creatorName %></span> created this task on <%= creationDate.toLocaleDateString() + ' at ' + creationDate.toLocaleTimeString() %>

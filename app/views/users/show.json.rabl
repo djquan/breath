@@ -17,7 +17,6 @@ end
 child(:tasks) do 
   attributes *Task.column_names 
   child(:comments) { attributes *Comment.column_names }
-  child(:assigned_users) { attributes :id, :name, :email }
 end
 
 child(:teams) do
