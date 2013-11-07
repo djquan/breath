@@ -1,4 +1,7 @@
 <h2><%= project.escape('name')%></h2>
+<button class="sort btn btn-info">
+  Sort by <%= sortByDate ? "priority" : "due date" %>
+</button><br><br>
 <div id="sortable">  
 <% tasks.each(function(task){ %>
 <% if (task.get('parent_id')) { return } %>
@@ -35,7 +38,11 @@ $(function(){
         var task_id = $(this).data('id');
         var task = Breath.user.tasks().get(task_id);
         task.save('order', i, {silent: true});
-      })
+        if (task.get('project_id') !== 0 && task.get('project_id')) {
+          var project = Breath.user.projects().get(task.get('project_id'));
+          project.tasks().get(task_id).set('order', i, {silent: true});
+        }
+      });
       Breath.user.tasks().sort();
     }
   });

@@ -9,12 +9,21 @@ Breath.Views.ProjectView = Backbone.View.extend({
     'blur #form-task': 'submitTask',
     'click .task_list': 'showTask', 
     'click .complete-check': 'toggleComplete',
+    'click .sort': 'toggleSort'
+  },
+
+  toggleSort: function(event){
+    event.preventDefault();
+    this.model.tasks().sortByDueDate = this.model.tasks().sortByDueDate ? false : true;
+    this.model.tasks().sort();
+    this.render();
   },
 
   render: function(){
     var renderedContent = this.template({
       project: this.model, 
-      tasks: this.model.tasks()
+      tasks: this.model.tasks(),
+      sortByDate: this.model.tasks().sortByDueDate
     });
     this.$el.html(renderedContent);
     return this;

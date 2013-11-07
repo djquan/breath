@@ -11,12 +11,21 @@ Breath.Views.TaskIndex = Backbone.View.extend({
     'blur #form-task': 'submitTask',
     'click .task_list': 'showTask', 
     'click .complete-check': 'toggleComplete',
+    'click .sort': 'toggleSort'
+  },
+
+  toggleSort: function(event){
+    event.preventDefault();
+    this.collection.sortByDueDate = this.collection.sortByDueDate ? false : true;
+    this.collection.sort();
+    this.render();
   },
 
   render: function(){
     var renderedContent = this.template({
       tasks: this.collection,
-      project: new Breath.Models.Project({name: "All", id: 0})
+      project: new Breath.Models.Project({name: "All", id: 0}),
+      sortByDate: this.collection.sortByDueDate 
     });
     this.$el.html(renderedContent);
     return this;
