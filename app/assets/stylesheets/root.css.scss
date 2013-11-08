@@ -3,11 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body{
-  background: #95a5a6;
+  background: #34495e;
 }
 
 .project-link:hover{ color: #3498db; }
-.task_index:hover{ color: #3498db; }
 .sidebar-header:hover{ color: #3498db; }
 .task_list:hover{ color: #3498db; }
 
@@ -21,7 +20,12 @@ body{
 .project-title {
   margin-left: 5px;
 }
-.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+.ui-state-highlight { 
+  background: #f39c12;
+  height: 1.5em; 
+  line-height: 1.2em; 
+}
+
 .task-detail div{
   background: #ecf0f1;
   padding: 5px 5px 0px 5px;
@@ -31,10 +35,7 @@ body{
 .app-sidebar{ 
   background: #ecf0f1; 
   margin-top: 5px;
-}
-
-.app-sidebar div{
-  // padding: 5px 20px 5px 3px;
+  padding-left: 5px;
 }
 
 .completed-task{
@@ -43,9 +44,14 @@ body{
 }
 
 .task-edit-form { border-bottom: thin solid #bdc3c7; }
+
 .tasks { 
   width: 100%;
   border-bottom: thin solid #bdc3c7;
   margin: 0px
 }
 
+.tasks:hover{
+  background: #34495e;
+  color: #3498db; 
+}
