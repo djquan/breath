@@ -7,11 +7,27 @@ Breath.Views.TaskEdit = Backbone.View.extend({
   },
 
   events: {
+    'blur .tag-form': 'addTag',
     'blur .update-task': 'updateTask',
     'blur .form-description': 'updateTask',
     'click .completed': 'toggleComplete',
     'click .remove': 'removeTask',
     'click .parent-task': 'showParent'
+  },
+
+  addTag: function(event){
+    var payload = $(event.currentTarget).val();
+    var that = this;
+    if (payload === "") { return }
+    $.ajax({
+      type: "POST",
+      url: "api/tasks/" + this.model.id + '/add_tag',
+      data: { name: $(event.currentTarget).val() },
+      success: function(){
+        console.log('hello');
+        that.model.fetch();
+      }
+    })
   },
 
   showParent: function(event){
@@ -76,7 +92,8 @@ Breath.Views.TaskEdit = Backbone.View.extend({
   render: function(){
     var renderedContent = this.template({
       task: this.model,
-      project: this.collection
+      project: this.collection,
+      tags: this.model.get('tags') || []
     });
 
     this.subtasks = new Breath.Views.SubtaskView({

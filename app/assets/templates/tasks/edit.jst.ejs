@@ -8,13 +8,17 @@
     <span class="label label-success parent-task" data-id="<%=task.get('parent_id')%>">
       <%= Breath.user.tasks().get(task.get('parent_id')).get('name') %>
     </span>
-  <% } %><br><br>
+    <% } %><br><br>
   <input type='text' name="name" class="update-task"
         value="<%= task.escape('name')%>"><br><br>
-  <textarea name='description' class='form-description form-control'><%= task.escape('description') %></textarea>
+  <textarea name='description' placeholder="Description" class='form-description form-control'><%= task.escape('description') %></textarea>
   <br><input type='date' name='due' value="<%= task.escape('due')%>"
-       class="update-task">
+    class="update-task"><br>
+  <input type='text' name='tag' placeholder="Tag..." class="tag-form">
        <br><br>
+  <% tags.forEach(function(tag){ %>
+    <span class="label label-warning"> <%= tag.name %></span>
+  <% }) %><br><br>
   <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
   <button class="completed btn btn-primary"><%= com %></button>
   <br><br>

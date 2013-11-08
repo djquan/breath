@@ -7,6 +7,7 @@ Breath::Application.routes.draw do
     resources :projects, only: [:index, :show, :create, :destroy, :update]
     resources :tasks, only: [:index, :show, :create, :destroy, :update] do
       post "assign_user", to: "tasks#assign_user"
+      post "add_tag", to: "tags#add_tag"
     end
     resources :teams, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]

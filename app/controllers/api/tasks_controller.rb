@@ -10,6 +10,7 @@ class Api::TasksController < ApplicationController
     @task = Task.find(params[:id])
     @assigned_users = @task.assigned_users
     @subtasks = @task.subtasks
+    @tags = @task.tags
     render 'api/tasks/show'
   end
 

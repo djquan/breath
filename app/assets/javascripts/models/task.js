@@ -26,9 +26,9 @@ Breath.Models.Task = Backbone.Model.extend({
     this.comments().reset(attributes.comments);
     this.assigned_users().reset(attributes.assigned_users);
     this.subtasks().reset(attributes.subtasks);
-    delete attributes.assigned_users
-    delete attributes.comments
-    delete attributes.subtasks
+    delete attributes.assigned_users;
+    delete attributes.comments;
+    delete attributes.subtasks;
     return attributes;
   }
 })
