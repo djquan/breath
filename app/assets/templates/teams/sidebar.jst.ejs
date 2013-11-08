@@ -2,7 +2,7 @@
 
 <% team.projects().each(function(project){ %>
   <span class="project-link" data-id="<%=project.id%>">
-    <%= project.escape('name') %> 
+    <%= project.escape('name') %>
   </span> <br>
 <% }) %>
 <input placeholder="Team project..." type="text" id="form-team" class="span10">

@@ -1,10 +1,18 @@
-<div class='container'>
-<h1 id="log_in">Sign in</h1>
-  <div class='row-fluid'>
-    <div class="span3 offset1">
+<div class='row'>
+  <div class='sign-in span4 offset1'>
+    <div class='row-fluid'>
+      <h1 id="log_in">Sign in</h1>
       <%= render 'layouts/form_users',
         action: session_url, update: false, button_name: "Sign In" %>
 
+      <form action="<%= session_url %>" method="POST">
+        <input type="hidden" name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+       <input type="hidden" name="user[name]" value="WorkerB">
+       <input type="hidden" name="user[password]" value="123456">
+       <p><input class="btn btn-default btn-wide btn-success" type="submit" 
+             value="Demo Account"></p>
+        </form>
       <%= link_to "Sign up", new_user_url, 
           class: 'btn btn-default btn-wide btn-info',
           method: 'GET' %> 

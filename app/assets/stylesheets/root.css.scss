@@ -6,10 +6,27 @@ body{
   background: #34495e;
 }
 
-.project-link:hover{ color: #3498db; }
-.sidebar-header:hover{ color: #3498db; }
-.task_list:hover{ color: #3498db; }
+.project-link { 
+  padding: 0px 5px 0px 5px ;
+}
 
+.project-link:hover{ color: #3498db; }
+
+.sidebar-header {
+  padding: 0px 5px 0px 5px ;
+  margin: 0px
+}
+
+.sidebar{
+  padding: 0px 5px 0px 5px ;
+  margin: 0px
+}
+
+.sidebar-header:hover{ 
+  color: #3498db; 
+}
+
+.task_list:hover{ color: #3498db; }
 
 .index {
   background: #ecf0f1;
@@ -35,7 +52,12 @@ body{
 .app-sidebar{ 
   background: #ecf0f1; 
   margin-top: 5px;
-  padding-left: 5px;
+}
+
+.sign-in {
+  background: #ecf0f1; 
+  margin-top: 5px;
+  padding: 20px;
 }
 
 .completed-task{
