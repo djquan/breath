@@ -17,9 +17,11 @@
   <% } %>
 
   <%if (subtask.get('due')){ %>
-  <span class="due-date label <%= labelTask %>">
-    <%= (new Date(subtask.get('due')).toLocaleDateString()) %> 
-  </span>
+    <% var date = new Date(subtask.get('due')) %>
+    <span class="due-date label <%= labelTask %>">
+      <%= (date.getUTCMonth() + 1) + '/' + date.getUTCDate() 
+          + '/' + date.getUTCFullYear() %> 
+    </span><br>
   <% }%><br>
   <br>
 <% }) %>

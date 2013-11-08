@@ -21,10 +21,11 @@
     </span>
   </div>
   <div class="span2">
-
     <%if (task.get('due')){ %>
+    <% var date = new Date(task.get('due')) %>
     <span class="due-date label <%= labelTask %>">
-      <%= (new Date(task.get('due')).toLocaleDateString()) %> 
+      <%= (date.getUTCMonth() + 1) + '/' + date.getUTCDate() 
+          + '/' + date.getUTCFullYear() %> 
     </span><br>
     <% }%>
   </div>

@@ -18,14 +18,13 @@ Tech used:
 * Tasks
     * Tasks can be assigned to any member. Tasks can be assigned to multiple users.
     * Tasks can have subtasks. Subtasks can have subtask (on and on forever). 
+    * Tasks can be sorted by date, or a custom priority based off dragging and dropping tasks. 
     * Users can comment on tasks that they are assigned to. 
 
 ##Upcoming features
 
 * File Attachments
-* Order by priority(jquery -UI)
 * Tags
-* Favorites
 * Team message board
 
 ##Interesting challenges and their solutions.

@@ -27,8 +27,9 @@ class User < ActiveRecord::Base
   end
   
   def reset_session_token!
-    self.session_token = self.class.generate_session_token
-    self.save!
+    # uncomment.  I commented this to allow multiple demo users to be signed in.
+    # self.session_token = self.class.generate_session_token
+    # self.save!
     self.session_token
   end
 
