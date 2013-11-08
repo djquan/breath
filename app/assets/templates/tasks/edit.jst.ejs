@@ -15,7 +15,7 @@
   <br><input type='date' name='due' value="<%= task.escape('due')%>"
     class="update-task"><br>
   <input type='text' name='tag' placeholder="Tag..." class="tag-form">
-       <br><br>
+  <%= tags.length > 0 ? '<br><br>' : "" %>
   <% tags.forEach(function(tag){ %>
     <span class="label label-warning"> <%= tag.name %></span>
   <% }) %><br><br>
@@ -23,5 +23,3 @@
   <button class="completed btn btn-primary"><%= com %></button>
   <br><br>
 </form>
-
-
