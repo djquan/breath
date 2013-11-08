@@ -81,8 +81,8 @@ Breath::Application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => 'Breath.io',
-      :access_key_id => ENV[AMAZON_ACCESS_KEY],
-      :secret_access_key => ENV[AMAZON_SECRET_KEY],
+      :access_key_id => ENV["AMAZON_ACCESS_KEY"],
+      :secret_access_key => ENV["AMAZON_SECRET_KEY"],
       :s3_host_name => 's3.amazonaws.com'
     }
   }
