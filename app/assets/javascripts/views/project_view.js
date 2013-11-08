@@ -8,7 +8,7 @@ Breath.Views.ProjectView = Backbone.View.extend({
 
   events: {
     'blur #form-task': 'submitTask',
-    'click .task_list': 'showTask', 
+    'click .tasks': 'showTask', 
     'click .complete-check': 'toggleComplete',
     'click .sort': 'toggleSort'
   },
