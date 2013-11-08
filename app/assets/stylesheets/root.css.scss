@@ -42,8 +42,10 @@ body{
   color: #bdc3c7;
 }
 
-.tasks {
+.task-edit-form { border-bottom: thin solid #bdc3c7; }
+.tasks { 
+  width: 100%;
+  border-bottom: thin solid #bdc3c7;
+  margin: 0px
 }
-
-.task-edit-form{ border-bottom: thin solid #bdc3c7; }
 

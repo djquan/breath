@@ -26,6 +26,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
   },
 
   toggleComplete: function(event){
+    event.preventDefault();
     var completedVar = this.model.get('completed') ? false : true;
     var that = this;
     this.model.save('completed', completedVar, {
