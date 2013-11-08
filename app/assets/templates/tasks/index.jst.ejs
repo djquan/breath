@@ -3,20 +3,23 @@
   Sort by <%= sortByDate ? "priority" : "due date" %>
 </button><br><br>
 <div id="sortable">  
-<% tasks.each(function(task){ %>
+<% tasks.each(function(task, i){ %>
 <% if (task.get('parent_id')) { return } %>
 <% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
 <% var checkedTask = task.get('completed') ? 'checked' : '' %>
 <% var labelTask = task.get('completed') ? 'label-success' : 'label-important' %>
 <div class="row tasks" data-id= "<%= task.id %>">
-  <div class="span8 offset1">
+  <div class="span2 offset1"><i class="icon-tasks"></i>
+    <span class="badge badge-info"><%= i + 1 %></span>
     <input type='checkbox' <%= checkedTask %> 
            class="complete-check" data-id="<%= task.id %>">
+  </div>
+  <div class="span7">
     <span class="task_list <%= completeClass %>" data-id="<%= task.id %>">
        <%= task.escape('name') %>
     </span>
   </div>
-  <div class="span2 offset1">
+  <div class="span2">
 
     <%if (task.get('due')){ %>
     <span class="due-date label <%= labelTask %>">
@@ -35,12 +38,14 @@ $(function(){
   $('#sortable').sortable({
     update: function(event, ui){
       $('.tasks', this).each(function(i){
+        Breath.user.tasks().sortByDueDate = false;
         var task_id = $(this).data('id');
         var task = Breath.user.tasks().get(task_id);
         task.save('order', i, {silent: true});
         if (task.get('project_id') !== 0 && task.get('project_id')) {
           var project = Breath.user.projects().get(task.get('project_id'));
           project.tasks().get(task_id).set('order', i, {silent: true});
+          project.tasks().sortByDueDate = false;
         }
       });
       Breath.user.tasks().sort();
