@@ -1,16 +1,17 @@
-<h2><%= project.escape('name')%></h2>
+<h3 class="project-title"><%= project.escape('name')%></h3>
 <button class="sort btn btn-info">
   Sort by <%= sortByDate ? "priority" : "due date" %>
 </button><br><br>
 <div id="sortable">  
-<% tasks.each(function(task, i){ %>
+<% var i = 1 %>
+<% tasks.each(function(task){ %>
 <% if (task.get('parent_id')) { return } %>
 <% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
 <% var checkedTask = task.get('completed') ? 'checked' : '' %>
 <% var labelTask = task.get('completed') ? 'label-success' : 'label-important' %>
 <div class="row tasks" data-id= "<%= task.id %>">
   <div class="span2 offset1"><i class="icon-tasks"></i>
-    <span class="badge badge-info"><%= i + 1 %></span>
+    <span class="badge badge-info"><%= i++ %></span>
     <input type='checkbox' <%= checkedTask %> 
            class="complete-check" data-id="<%= task.id %>">
   </div>
@@ -36,6 +37,7 @@
 <script>
 $(function(){
   $('#sortable').sortable({
+    placeholder: "ui-state-highlight",
     update: function(event, ui){
       $('.tasks', this).each(function(i){
         Breath.user.tasks().sortByDueDate = false;

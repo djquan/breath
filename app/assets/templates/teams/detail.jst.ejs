@@ -1,4 +1,4 @@
-<h5> <%= team.escape('name') %></h5>
+<h3> <%= team.escape('name') %></h3>
 <br><h6 class="member-list"> Member List</h6>
 <% team.users().each(function(member){ %>
   <p class="member-name"><%= member.get('name') %></p>

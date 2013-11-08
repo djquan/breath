@@ -1,4 +1,4 @@
-<form>
+<form class="task-edit-form">
   <% if(project){ %>
     <span class="label label-info"><%= project.get('name') %></span>
   <% } else { %>
@@ -14,8 +14,10 @@
   <textarea name='description' class='form-description form-control'><%= task.escape('description') %></textarea>
   <br><input type='date' name='due' value="<%= task.escape('due')%>"
        class="update-task">
+       <br><br>
+  <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
+  <button class="completed btn btn-primary"><%= com %></button>
+  <br><br>
 </form>
 
 
-<% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
-<button class="completed btn btn-primary"><%= com %></button>

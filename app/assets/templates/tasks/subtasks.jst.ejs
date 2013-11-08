@@ -1,4 +1,4 @@
-<h5> Subtasks </h5>
+<div class="task-edit-form">
 <% subtasks.each(function(subtask){ %>
   <% var completeClass = subtask.get('completed') ? 'completed-task' : 'incomplete-task' %>
   <% var checkedTask = subtask.get('completed') ? 'checked' : '' %>
@@ -20,7 +20,8 @@
   <span class="due-date label <%= labelTask %>">
     <%= (new Date(subtask.get('due')).toLocaleDateString()) %> 
   </span>
-  <% }%>
+  <% }%><br>
   <br>
 <% }) %>
 <input placeholder="Subtask..." type="text" id="form-task" class="form-control">
+</div>

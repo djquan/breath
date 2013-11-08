@@ -14,28 +14,36 @@ body{
 
 .index {
   background: #ecf0f1;
-  border-radius: 5%;
-  padding: 10px;
-  margin-top: 20px;
+  width: 100%;
+  margin-top: 5px;
 }
 
+.project-title {
+  margin-left: 5px;
+}
+.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
 .task-detail div{
   background: #ecf0f1;
-  border-radius: 5%;
-  padding: 10px;
-  margin-top: 20px;
+  padding: 5px 5px 0px 5px;
+  margin-top: 5px;
 }
 
 .app-sidebar{ 
   background: #ecf0f1; 
-  margin-top: 20px;
-  border-radius: 2%;
+  margin-top: 5px;
 }
 
 .app-sidebar div{
-  padding: 5px 20px 5px 3px;
+  // padding: 5px 20px 5px 3px;
 }
 
 .completed-task{
   text-decoration: line-through;
+  color: #bdc3c7;
 }
+
+.tasks {
+}
+
+.task-edit-form{ border-bottom: thin solid #bdc3c7; }
+

@@ -3,6 +3,7 @@ Breath.Views.ProjectView = Backbone.View.extend({
   initialize: function(){
     this.listenTo(this.model.tasks(), "add change remove sync", this.render);
     this.listenTo(this.model, "add remove change sync", this.render)
+    this.listenTo(Breath.user.tasks(), "add change remove sync", this.render)
   },
 
   events: {
@@ -20,6 +21,7 @@ Breath.Views.ProjectView = Backbone.View.extend({
   },
 
   render: function(){
+    this.model.tasks().sort();
     var renderedContent = this.template({
       project: this.model, 
       tasks: this.model.tasks(),
