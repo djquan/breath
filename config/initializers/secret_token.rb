@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Breath::Application.config.secret_key_base = '153c2bdc3a3ecf3ecf2720305d657af2eca6f42a584460310619fa50a310506e3bb4af157063d1cf3687e53f5e2b2ab710414f8e9fc092434edaedc330e7c7fc'
+Breath::Application.config.secret_key_base = ENV['RAILS_SECRET']

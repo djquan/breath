@@ -6,6 +6,7 @@
 <% var i = 1 %>
 <% tasks.each(function(task){ %>
 <% if (task.get('parent_id')) { return } %>
+<% if (!Breath.user.tasks().get(task.id)) { return } %>
 <% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
 <% var checkedTask = task.get('completed') ? 'checked' : '' %>
 <% var labelTask = task.get('completed') ? 'label-success' : 'label-important' %>

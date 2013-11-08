@@ -21,6 +21,7 @@ gem 'rabl'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'less-rails'
+gem 'figaro'
 
 group :doc do
   gem 'sdoc', require: false

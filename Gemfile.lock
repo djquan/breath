@@ -79,6 +79,9 @@ GEM
       railties (>= 3.0.0)
     faker (1.2.0)
       i18n (~> 0.5)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -221,6 +224,7 @@ DEPENDENCIES
   debugger
   factory_girl_rails
   faker
+  figaro
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails
