@@ -1,9 +1,7 @@
-<div class='container'>
-<h1 id="log_in">Sign up</h1>
-  <div class='row-fluid'>
-    <div class="span3 offset1">
-      <%= render 'layouts/form_users',
-        action: users_url, update: false, button_name: "Create User" %>
-    </div>
+<div class='row-fluid'>
+  <div class="span3 offset1 sign-in">
+    <h1 id="log_in">Sign up</h1>
+    <%= render 'layouts/form_users',
+      action: users_url, update: false, button_name: "Create User" %>
   </div>
 </div>
