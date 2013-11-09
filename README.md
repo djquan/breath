@@ -21,10 +21,10 @@ Tech used:
     * Tasks can be sorted by date, or a custom priority based off dragging and dropping tasks. 
     * Users can comment on tasks that they are assigned to. 
     * Users can add tags to tasks
+    * Users can upload files to tasks.
 
 ##Upcoming features
 
-* File Attachments
 * Search?
 * Team message board
 

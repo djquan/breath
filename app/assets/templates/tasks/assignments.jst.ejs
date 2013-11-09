@@ -2,6 +2,7 @@
 <% var creationDate = new Date(task.get('created_at'))%>
 <% if (task.get('creator_id') === Breath.user.id) { %>
 <div class="task-edit-form">
+  <button class="remove btn btn-wide btn-danger">Remove Task</button><br><br>
   <select class="form-control add-users">
     <option value="">Assign the task.</option>
     <% var users = Breath.users %>
@@ -11,7 +12,6 @@
       <option value="<%= user.id %>"><%= user.escape('name') %></option>
     <% }) %>
   </select><br><br>
-<button class="remove btn btn-wide btn-danger">Remove Task</button><br><br>
 </div>
 <% } %>
 

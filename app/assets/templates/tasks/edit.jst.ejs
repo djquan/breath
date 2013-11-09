@@ -22,10 +22,13 @@
   <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %><br>
   <% if (task.get('attachments')) { %>
     <% task.get('attachments').forEach(function(attachment, i){ %>
-    <a href="<%= attachment.url %>" target="_blank"><%= attachment.file_name %></a>
-    <% }) %>
-  <% } %><br>
-  <input type="file" onchange="handle_files(this.files)" enctype="multipart/form-data"> <br><br>
+    <span class="label label-inverse">
+      <a href="<%= attachment.url %>" target="_blank">File <%= i + 1%></a>
+    </span>
+    <% }) %><br>
+  <% } %>
+  <div class="error"></div>
+  <input class="file-form" type="file" onchange="handle_files(this.files)" enctype="multipart/form-data"> <br><br>
   <button class="completed btn btn-primary"><%= com %></button>
   <br><br>
 </form>
@@ -47,8 +50,13 @@ function handle_files(files) {
           var project = Breath.user.projects().get(task.get('project_id'));
           project.tasks().get(task_id).fetch();
         }
+      },
+      error: function(){
+        $('.error').html("File could not be saved")
       }
     })
+  }
+  reader.onerror = function(){
   }
   reader.readAsDataURL(file);
 }
