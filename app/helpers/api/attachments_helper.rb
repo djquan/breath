@@ -1,0 +1,2 @@
+module Api::AttachmentsHelper
+end

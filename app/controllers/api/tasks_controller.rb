@@ -11,6 +11,7 @@ class Api::TasksController < ApplicationController
     @assigned_users = @task.assigned_users
     @subtasks = @task.subtasks
     @tags = @task.tags
+    @attachments = @task.attachments
     render 'api/tasks/show'
   end
 

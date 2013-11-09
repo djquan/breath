@@ -8,11 +8,19 @@ Breath.Views.TaskEdit = Backbone.View.extend({
 
   events: {
     'blur .tag-form': 'addTag',
+    // 'blur .file-form': 'addFile',
     'blur .update-task': 'updateTask',
     'blur .form-description': 'updateTask',
     'click .completed': 'toggleComplete',
     'click .remove': 'removeTask',
     'click .parent-task': 'showParent'
+  },
+
+  addFile: function(event){
+    if ($(event.currentTarget).val() === "") { return }
+    var reader = new FileReader();
+    var file = reader.readAsDataURL($(event.currentTarget).value);
+    console.log(file);
   },
 
   addTag: function(event){

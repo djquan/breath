@@ -1,4 +1,4 @@
-<form class="task-edit-form">
+<form class="task-edit-form" enctype="multipart/form-data">
   <% if(project){ %>
     <span class="label label-info"><%= project.get('name') %></span>
   <% } else { %>
@@ -19,7 +19,37 @@
   <% tags.forEach(function(tag){ %>
     <span class="label label-warning"> <%= tag.name %></span>
   <% }) %><br><br>
-  <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
+  <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %><br>
+  <% if (task.get('attachments')) { %>
+    <% task.get('attachments').forEach(function(attachment, i){ %>
+    <a href="<%= attachment.url %>" target="_blank"><%= attachment.file_name %></a>
+    <% }) %>
+  <% } %><br>
+  <input type="file" onchange="handle_files(this.files)" enctype="multipart/form-data"> <br><br>
   <button class="completed btn btn-primary"><%= com %></button>
   <br><br>
 </form>
+
+<script>
+function handle_files(files) {
+  var task_id = <%= task.id %>;
+  var task = Breath.user.tasks().get(task_id);
+  var file = files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    $.ajax({
+      type: "POST",
+      url: "api/tasks/" + task_id + '/upload-file',
+      data: { file: e.target.result },
+      success: function(){
+        task.fetch();
+        if (task.get('project_id') !== 0 && task.get('project_id')) {
+          var project = Breath.user.projects().get(task.get('project_id'));
+          project.tasks().get(task_id).fetch();
+        }
+      }
+    })
+  }
+  reader.readAsDataURL(file);
+}
+</script>
