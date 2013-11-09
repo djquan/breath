@@ -71,7 +71,10 @@ body{
   color: #bdc3c7;
 }
 
-.task-edit-form { border-bottom: thin solid #bdc3c7; }
+.task-edit-form { 
+  border-bottom: thin solid #bdc3c7; 
+  margin-bottom: 0px;
+}
 
 .tasks { 
   width: 100%;
@@ -82,6 +85,8 @@ body{
 
 .badger { position: relative;  }
 .badgey { position: absolute; bottom: 0; }
+
+.badgey i { margin-right: 15px }
 .task_list { position: absolute; bottom: 0; }
 .due-date { position: absolute; bottom: 0; }
 
