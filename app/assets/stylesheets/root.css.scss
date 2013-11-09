@@ -76,8 +76,14 @@ body{
 .tasks { 
   width: 100%;
   border-bottom: thin solid #bdc3c7;
-  margin: 0px
+  margin: 0px;
+  position: relative
 }
+
+.badger { position: relative;  }
+.badgey { position: absolute; bottom: 0; }
+.task_list { position: absolute; bottom: 0; }
+.due-date { position: absolute; bottom: 0; }
 
 .tasks:hover{
   background: #34495e;

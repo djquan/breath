@@ -17,7 +17,9 @@
   <input type='text' name='tag' placeholder="Tag..." class="tag-form">
   <%= tags.length > 0 ? '<br>' : "" %>
   <% tags.forEach(function(tag){ %>
-    <span class="label label-warning"> <%= tag.name %></span>
+    <span class="label label-warning"> 
+      <i class="icon-tag"></i> <%= tag.name %>
+    </span>
   <% }) %>
   <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
   <div class="error"></div>
@@ -26,7 +28,8 @@
     <%= "<br>" %>
     <% task.get('attachments').forEach(function(attachment, i){ %>
     <span class="label label-inverse">
-      <a href="<%= attachment.url %>" target="_blank">File <%= i + 1%></a>
+      <i class="icon-file"></i>
+      <a href="<%= attachment.url %>" target="_blank"> File <%= i + 1%></a>
     </span>
     <% }) %>
     <%= "<br>" %> 

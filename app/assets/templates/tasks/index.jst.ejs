@@ -11,10 +11,13 @@
 <% var checkedTask = task.get('completed') ? 'checked' : '' %>
 <% var labelTask = task.get('completed') ? 'label-success' : 'label-important' %>
 <div class="row tasks" data-id= "<%= task.id %>">
-  <div class="span2 offset1"><i class="icon-tasks"></i>
-    <span class="badge badge-info"><%= i++ %></span>
-    <input type='checkbox' <%= checkedTask %> 
-           class="complete-check" data-id="<%= task.id %>">
+  <div class="badger span2 offset1">
+    <div class="badgey">
+      <i class="icon-th-list"></i>
+      <span class="badge badge-info"><%= i++ %></span>
+      <input type='checkbox' <%= checkedTask %> 
+             class="complete-check" data-id="<%= task.id %>">
+     </div>
   </div>
   <div class="span7">
     <span class="task_list <%= completeClass %>" data-id="<%= task.id %>">
