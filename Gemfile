@@ -3,8 +3,8 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.1'
 
+gem 'pg'
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
   gem 'newrelic_rpm'
 end
@@ -32,7 +32,6 @@ end
 gem 'bcrypt-ruby', '~> 3.1.2', require: 'bcrypt'
 
 group :development, :test do 
-  gem 'sqlite3'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'better_errors'
@@ -43,6 +42,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'sqlite3'
   gem 'capybara'
   gem 'simplecov', :require => false
   gem 'faker'
