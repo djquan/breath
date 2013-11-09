@@ -37,4 +37,3 @@ Todo
 Todo
 
 [![Code Climate](https://codeclimate.com/github/djquan/breath.png)](https://codeclimate.com/github/djquan/breath)
-[![Dependency Status](https://gemnasium.com/djquan/breath.png)](https://gemnasium.com/djquan/breath)

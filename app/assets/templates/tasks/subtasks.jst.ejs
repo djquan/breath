@@ -8,9 +8,6 @@
   <span class="subtask_list <%= completeClass %>" data-id="<%= subtask.id %>">
      <%= subtask.escape('name') %>
   </span>
-  <% if (subtask.get('creator_id') !== Breath.user.id){ %>
-    <span class="label label-warning">Assigned </span>
-  <% } %>
 
   <% if (subtask.get('creator_id') !== Breath.user.id){ %>
     <span class="label label-warning">Assigned </span>
@@ -18,7 +15,7 @@
 
   <%if (subtask.get('due')){ %>
     <% var date = new Date(subtask.get('due')) %>
-    <span class="due-date label <%= labelTask %>">
+    <span class="label <%= labelTask %>">
       <%= (date.getUTCMonth() + 1) + '/' + date.getUTCDate() 
           + '/' + date.getUTCFullYear() %> 
     </span><br>
