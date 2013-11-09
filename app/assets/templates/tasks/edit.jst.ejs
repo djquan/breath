@@ -15,20 +15,22 @@
   <br><input type='date' name='due' value="<%= task.escape('due')%>"
     class="update-task"><br>
   <input type='text' name='tag' placeholder="Tag..." class="tag-form">
-  <%= tags.length > 0 ? '<br><br>' : "" %>
+  <%= tags.length > 0 ? '<br>' : "" %>
   <% tags.forEach(function(tag){ %>
     <span class="label label-warning"> <%= tag.name %></span>
-  <% }) %><br><br>
-  <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %><br>
-  <% if (task.get('attachments')) { %>
+  <% }) %>
+  <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
+  <div class="error"></div>
+  <input class="file-form" type="file" onchange="handle_files(this.files)" enctype="multipart/form-data"> 
+  <% if (task.get('attachments') && task.get('attachments').length > 0) { %>
+    <%= "<br>" %>
     <% task.get('attachments').forEach(function(attachment, i){ %>
     <span class="label label-inverse">
       <a href="<%= attachment.url %>" target="_blank">File <%= i + 1%></a>
     </span>
-    <% }) %><br>
-  <% } %>
-  <div class="error"></div>
-  <input class="file-form" type="file" onchange="handle_files(this.files)" enctype="multipart/form-data"> <br><br>
+    <% }) %>
+    <%= "<br>" %> 
+    <% } %><br>
   <button class="completed btn btn-primary"><%= com %></button>
   <br><br>
 </form>
