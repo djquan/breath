@@ -30,8 +30,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   },
-// I really need to refactor this.
-// Write a method to check if an object belongs to a project
+
   toggleComplete: function(event){
     var taskId = $(event.currentTarget).data('id')
     var task = this.collection.get(taskId);
@@ -39,7 +38,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
     var completedVar = task.get('completed') ? false : true
     task.save('completed', completedVar, {
       success: function(obj){
-        if (obj.get('project_id') !== 0 && obj.get('project_id')) {
+        if (obj.hasProject()) {
           var project = Breath.user.projects().get(obj.get('project_id'));
           project.tasks().get(taskId).save('completed', completedVar)
           Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/'+ obj.id, {trigger: true})
@@ -54,7 +53,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
   showTask: function(event){
     var destination = $(event.currentTarget).data('id');
     var obj = this.collection.get(destination);
-    if (obj.get('project_id') !== 0 && obj.get('project_id')) {
+    if (obj.hasProject()) {
       var project = Breath.user.projects().get(obj.get('project_id'));
       Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/'+ obj.id, {trigger: true})
     } else {

@@ -22,6 +22,14 @@ Breath.Models.Task = Backbone.Model.extend({
     return this._assigned_users;
   },
 
+  hasProject: function(){
+    if (this.get('project_id') !== 0 && this.get('project_id')) { 
+      return true;
+    } else { 
+      return false;
+    };
+  },
+
   parse: function(attributes){
     this.comments().reset(attributes.comments);
     this.assigned_users().reset(attributes.assigned_users);

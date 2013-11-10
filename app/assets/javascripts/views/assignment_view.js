@@ -18,7 +18,6 @@ Breath.Views.AssignmentView = Backbone.View.extend({
       type: "POST",
       url: "api/tasks/" + this.model.id + '/assign_user',
       data: { user: selectedUserID },
-
       success: function(){
         that.model.fetch();
       },

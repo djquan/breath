@@ -51,7 +51,7 @@ function handle_files(files) {
       data: { file: e.target.result },
       success: function(){
         task.fetch();
-        if (task.get('project_id') !== 0 && task.get('project_id')) {
+        if (task.hasProject()) {
           var project = Breath.user.projects().get(task.get('project_id'));
           project.tasks().get(task_id).fetch();
         }

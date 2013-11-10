@@ -16,7 +16,7 @@ Breath.Views.SubtaskView = Backbone.View.extend({
   showTask: function(event){
     var destination = $(event.currentTarget).data('id');
     var obj = Breath.user.tasks().get(destination);
-    if (obj.get('project_id') !== 0 && obj.get('project_id')) {
+    if (obj.hasProject()) {
       var project = Breath.user.projects().get(obj.get('project_id'));
       Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/'+ obj.id, {trigger: true})
     } else {
@@ -34,7 +34,7 @@ Breath.Views.SubtaskView = Backbone.View.extend({
       project_id: that.model.get('project_id')
     }, {
       success: function(obj){
-        if (obj.get('project_id') !== 0 && obj.get('project_id')) {
+        if (obj.hasProject()) {
           var project = Breath.user.projects().get(obj.get('project_id'));
           project.tasks().add(obj);
         }
@@ -51,7 +51,7 @@ Breath.Views.SubtaskView = Backbone.View.extend({
     var completedVar = task.get('completed') ? false : true
     task.save('completed', completedVar, {
       success: function(obj){
-        if (obj.get('project_id') !== 0 && obj.get('project_id')) {
+        if (obj.hasProject()) {
           var project = Breath.user.projects().get(obj.get('project_id'));
           project.tasks().get(taskId).save('completed', completedVar)
         }

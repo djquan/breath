@@ -49,7 +49,7 @@ $(function(){
         var task_id = $(this).data('id');
         var task = Breath.user.tasks().get(task_id);
         task.save('order', i, {silent: true});
-        if (task.get('project_id') !== 0 && task.get('project_id')) {
+        if (task.hasProject()) {
           var project = Breath.user.projects().get(task.get('project_id'));
           project.tasks().get(task_id).set('order', i, {silent: true});
           project.tasks().sortByDueDate = false;

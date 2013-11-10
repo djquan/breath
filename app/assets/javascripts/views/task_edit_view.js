@@ -33,7 +33,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
   showParent: function(event){
     var destination = $(event.currentTarget).data('id');
     var obj = Breath.user.tasks().get(destination);
-    if (obj.get('project_id') !== 0 && obj.get('project_id')) {
+    if (obj.hasProject()) {
       var project = Breath.user.projects().get(obj.get('project_id'));
       Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/'+ obj.id, {trigger: true})
     } else {
@@ -47,7 +47,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     var that = this;
     this.model.save('completed', completedVar, {
       success: function(obj){
-        if (obj.get('project_id') !== 0 && obj.get('project_id')){
+        if (obj.hasProject()){
           Breath.user.tasks().get(obj.id).save('completed', completedVar);
           Breath.user.tasks().sort();
         }
@@ -63,7 +63,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     var that = this;
     this.model.save(target, payload, {
       success: function(obj){
-        if (obj.get('project_id') !== 0 && obj.get('project_id')){
+        if (obj.hasProject()){
           Breath.user.tasks().get(obj.id).save(target, payload);
           Breath.user.tasks().sort();
         }
