@@ -1,9 +1,11 @@
 <h6 class="sidebar">Personal</h6>
 <% projects.each(function(project){ %>
-<% if (project.get('team_id') === 0) {  %>
-    <span class="project-link" data-id="<%=project.id%>">
-      <%= project.escape('name') %> 
-    </span> <br>
-<% } %>
+  <% if (project.get('team_id') === 0) {  %>
+    <div class="project-link" data-id="<%=project.id%>">
+      <span>
+        <%= project.escape('name') %>
+      </span> <br>
+    </div>
+  <% } %>
 <% }) %>
 <input placeholder="Personal project..." type="text" id="form-personal" class="span10">

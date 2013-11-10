@@ -6,10 +6,22 @@ body{
   background: #34495e;
 }
 
+.banner {
+  color: #3498db;
+  margin-left: 5px;
+}
 .project-link { 
   padding: 0px 5px 0px 5px ;
 }
 
+.span2 input{
+  background: #34495e;
+  color: #ecf0f1;
+  margin-top: 5px;
+}
+
+.team-page{ margin-left: 5px; margin-bottom: 5px }
+.sort { margin-left: 5px; }
 .project-link:hover{ color: #3498db; }
 
 .sidebar-header {

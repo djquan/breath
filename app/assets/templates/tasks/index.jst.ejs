@@ -1,7 +1,7 @@
 <h3 class="project-title"><%= project.escape('name')%></h3>
 <button class="sort btn btn-info">
   Sort by <%= sortByDate ? "priority" : "due date" %>
-</button><br><br>
+</button><br>
 <div id="sortable">  
 <% var i = 1 %>
 <% tasks.each(function(task){ %>

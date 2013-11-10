@@ -1,3 +1,4 @@
+<div class="team-page">
 <h3> <%= team.escape('name') %></h3>
 <br><h6 class="member-list"> Member List</h6>
 <% team.users().each(function(member){ %>
@@ -13,4 +14,5 @@
   <option value="<%= user.id %>"><%= user.escape('name') %></option>
 <% }) %>
 </select><br><br>
-<button class='leave btn btn-block btn-lg btn-danger'>Leave team</button>
+<button class='leave btn btn-lg btn-danger'>Leave team</button>
+</div>
