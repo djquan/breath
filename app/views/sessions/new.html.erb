@@ -1,21 +1,40 @@
+<a href="https://github.com/djquan/breath"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
 <div class='row'>
   <div class='sign-in span4 offset1'>
     <div class='row-fluid'>
       <h1 id="log_in">Sign in</h1>
       <%= render 'layouts/form_users',
         action: session_url, update: false, button_name: "Sign In" %>
-
       <form action="<%= session_url %>" method="POST">
         <input type="hidden" name="authenticity_token"
          value="<%= form_authenticity_token %>">
-       <input type="hidden" name="user[name]" value="WorkerB">
-       <input type="hidden" name="user[password]" value="123456">
-       <p><input class="btn btn-default btn-wide btn-success" type="submit" 
-             value="Demo Account"></p>
-        </form>
-      <%= link_to "Sign up", new_user_url, 
+        <input type="hidden" name="user[name]" value="WorkerB">
+        <input type="hidden" name="user[password]" value="123456">
+        <input class="btn btn-default btn-wide btn-success" type="submit" 
+               value="Demo Account">
+      </form>
+      <%= link_to "Sign Up", new_user_url, 
           class: 'btn btn-default btn-wide btn-info',
           method: 'GET' %> 
     </div>
+  </div>
+  <div class='sign-in span4 offset2'>
+    <h1>Take a breath</h1><br>
+    <h4>breath.io is an asana clone.</h4>
+    <h4>breath.io is a group and team todo list.</h4><br>
+
+    <h4>Features</h4>
+    <i class="icon-th-list"></i><span class='feature'>Team based task managment via projects</span><br>
+    <i class="icon-th-list"></i><span class='feature'>Suitable for teams or individuals</span><br>
+    <i class="icon-th-list"></i><span class='feature'>Feature filled tasks</span><br>
+    <ul>
+      <li>Sort by due date</li>
+      <li>Or drag and drop the task where you think it belongs</li>
+      <li>Subtasks</li>
+      <li>File attachments</li>
+      <li>Comments</li>
+      <li>Assign the task to someone</li>
+      <li>Tags</li>
+    </ul>
   </div>
 </div>
