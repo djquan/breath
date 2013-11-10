@@ -22,18 +22,15 @@ Tech used:
     * Users can comment on tasks that they are assigned to. 
     * Users can add tags to tasks
     * Users can upload files to tasks.
+* Hand rolled authentication system for easy customization 
 
 ##Upcoming features
 
-* Search?
+* Search
 * Team message board
-
-##Interesting challenges and their solutions.
-
-Todo
 
 ##Known Issues
 
-Todo
+Feel free to submit issue requests if you find bugs.
 
 [![Code Climate](https://codeclimate.com/github/djquan/breath.png)](https://codeclimate.com/github/djquan/breath)

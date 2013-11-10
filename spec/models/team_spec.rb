@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Team do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_presence_of :name }
+  it { should have_many :team_lists }
+  it { should have_many :users }
+  it { should have_many :projects }
 end
