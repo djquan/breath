@@ -6,12 +6,14 @@ child(:projects) do
   child(:tasks) do 
     attributes *Task.column_names 
     child(:comments) { attributes *Comment.column_names }
+    child(:tags) { attributes *Tag.column_names }
   end
 end
 
 child(@assigned_tasks => :assigned_tasks) do 
   attributes *Task.column_names 
   child(:comments) { attributes *Comment.column_names }
+  child(:tags) { attributes *Tag.column_names }
 end
 
 child(:tasks) do 
@@ -26,6 +28,7 @@ child(:teams) do
     child(:tasks) do 
       attributes *Task.column_names 
       child(:comments) { attributes *Comment.column_names }
+      child(:tags) { attributes *Tag.column_names }
     end
   end
   child(:users) { attributes :id, :name, :email }
