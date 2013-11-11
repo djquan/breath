@@ -14,9 +14,7 @@ body{
   color: #ecf0f1;
   margin-top: 5px;
 }
-.hidden {
-  display: none;
-}
+
 .team-page{ margin-left: 5px; margin-bottom: 5px }
 .sort { margin-left: 5px; }
 .project-link:hover{ color: #3498db; }
@@ -59,6 +57,7 @@ body{
 .app-sidebar{ 
   background: #ecf0f1; 
   margin-top: 5px;
+  padding-bottom: 50px;
 }
 
 .sign-in {

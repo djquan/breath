@@ -15,6 +15,13 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
   },
 
   showProjectTaskEditPage: function(proj, id){
+    if ($('.index').hasClass('span8')){
+      $('.index').addClass('span5', 300);
+      $('.index').removeClass('span8', 300);
+      setTimeout(function(){
+        $('.task-detail').show(200);
+      },150);
+    };
     var project = Breath.user.projects().get(proj);
     var taskEditPage;
     if (project) {
@@ -31,10 +38,12 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
   },
 
   showTaskEditPage: function(id){
-    $('.task-detail').removeClass('hidden');
     if ($('.index').hasClass('span8')){
-      $('.index').removeClass('span8');
-      $('.index').addClass('span5');
+      $('.index').addClass('span5', 300);
+      $('.index').removeClass('span8', 300);
+      setTimeout(function(){
+        $('.task-detail').show(200);
+      },150);
     }
     var taskEditPage = new Breath.Views.TaskEdit({
       model: Breath.user.tasks().get(id)

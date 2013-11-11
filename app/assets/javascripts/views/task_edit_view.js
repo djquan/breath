@@ -32,10 +32,9 @@ Breath.Views.TaskEdit = Backbone.View.extend({
   },
 
   closeView: function(event){
-    $('.index').removeClass('span5');
-    $('.index').addClass('span8');
-    $('.task-detail').addClass('hidden');
-    this.remove();
+    $('.task-detail').hide(300);
+    $('.index').addClass('span8', 3000);
+    $('.index').removeClass('span5', 300);
     Backbone.history.navigate('close');
   },
 
