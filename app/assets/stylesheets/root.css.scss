@@ -71,6 +71,10 @@ body{
   color: #bdc3c7;
 }
 
+.completed:hover{
+  color: #3498db;
+}
+
 .task-edit-form { 
   border-bottom: thin solid #bdc3c7; 
   margin-bottom: 0px;

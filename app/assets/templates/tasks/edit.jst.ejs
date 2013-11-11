@@ -9,6 +9,8 @@
       <%= Breath.user.tasks().get(task.get('parent_id')).get('name') %>
     </span>
     <% } %><br><br>
+  <% var com = task.get('completed') ? "fa-check-square-o" : "fa-square-o" %>
+  <i class="completed fa <%= com %> fa-2x"></i>
   <input type='text' name="name" class="update-task"
         value="<%= task.escape('name')%>"><br><br>
   <textarea name='description' placeholder="Description" class='form-description form-control'><%= task.escape('description') %></textarea>
@@ -21,7 +23,6 @@
       <i class="icon-tag"></i> <%= tag.name %>
     </span>
   <% }) %>
-  <% var com = task.get('completed') ? "Mark Incomplete" : "Mark Completed" %>
   <div class="error"></div>
   <input class="file-form" type="file" onchange="handle_files(this.files)" enctype="multipart/form-data"> 
   <% if (task.get('attachments') && task.get('attachments').length > 0) { %>
@@ -34,8 +35,6 @@
     <% }) %>
     <%= "<br>" %> 
     <% } %><br>
-  <button class="completed btn btn-primary"><%= com %></button>
-  <br><br>
 </form>
 
 <script>
