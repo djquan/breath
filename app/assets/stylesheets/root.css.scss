@@ -43,7 +43,7 @@ body{
 .project-title { margin-left: 5px; }
 
 .ui-state-highlight { 
-  background: #f39c12;
+  background: #34495e;
   height: 1.5em; 
   line-height: 1.2em; 
 }
@@ -87,8 +87,14 @@ body{
   position: relative
 }
 
-.badger { position: relative;  }
-.badgey { position: absolute; bottom: 0; }
+.badger { 
+  position: relative;
+}
+.badgey { 
+  position: absolute;
+  margin-left: 5px;
+  bottom: 0; 
+}
 
 .badgey i { margin-right: 15px }
 .task_list { position: absolute; bottom: 0; }

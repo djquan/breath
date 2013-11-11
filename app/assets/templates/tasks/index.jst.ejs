@@ -8,15 +8,14 @@
 <% if (task.get('parent_id')) { return } %>
 <% if (!Breath.user.tasks().get(task.id)) { return } %>
 <% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
-<% var checkedTask = task.get('completed') ? 'checked' : '' %>
+<% var checkedTask = task.get('completed') ? 'fa-check-square-o' : 'fa-square-o' %>
 <% var labelTask = task.get('completed') ? 'label-success' : 'label-important' %>
-<div class="row tasks" data-id= "<%= task.id %>">
-  <div class="badger span2 offset1">
+<div class="row-fluid tasks" data-id= "<%= task.id %>">
+  <div class="badger span3">
     <div class="badgey">
-      <i class="fa fa-sort"></i>
+      <i class="fa fa-sort fa-lg"></i>
       <span class="badge badge-info"><%= i++ %></span>
-      <input type='checkbox' <%= checkedTask %> 
-             class="complete-check" data-id="<%= task.id %>">
+      <i class='fa <%= checkedTask %> fa-lg complete-check' data-id="<%= task.id %>"></i>
      </div>
   </div>
   <div class="span7">
