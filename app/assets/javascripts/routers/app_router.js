@@ -19,7 +19,7 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
       $('.index').addClass('span5', 300);
       $('.index').removeClass('span8', 300);
       setTimeout(function(){
-        $('.task-detail').show(200);
+        $('.task-detail').show(300);
       },150);
     };
     var project = Breath.user.projects().get(proj);
@@ -42,7 +42,7 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
       $('.index').addClass('span5', 300);
       $('.index').removeClass('span8', 300);
       setTimeout(function(){
-        $('.task-detail').show(200);
+        $('.task-detail').show(300);
       },150);
     }
     var taskEditPage = new Breath.Views.TaskEdit({
