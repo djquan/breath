@@ -24,6 +24,7 @@ gem 'less-rails'
 gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'font-awesome-rails'
 
 group :doc do
   gem 'sdoc', require: false

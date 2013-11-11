@@ -1,9 +1,9 @@
-<h6 class="sidebar-header"> <%= team.escape('name') %></h6>
+<h6 class="sidebar-header"><i class="fa fa-users"></i> <%= team.escape('name') %></h6>
 
 <% team.projects().each(function(project){ %>
 <div class="project-link" data-id="<%=project.id%>">
   <span>
-    <%= project.escape('name') %>
+    <i class="fa fa-list-ul"></i>  <%= project.escape('name') %>
   </span> <br>
 </div>
 <% }) %>

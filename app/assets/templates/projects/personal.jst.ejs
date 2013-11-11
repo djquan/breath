@@ -3,7 +3,7 @@
   <% if (project.get('team_id') === 0) {  %>
     <div class="project-link" data-id="<%=project.id%>">
       <span>
-        <%= project.escape('name') %>
+       <i class="fa fa-list-ul"></i> <%= project.escape('name') %>
       </span> <br>
     </div>
   <% } %>

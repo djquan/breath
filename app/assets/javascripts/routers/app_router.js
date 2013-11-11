@@ -31,6 +31,11 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
   },
 
   showTaskEditPage: function(id){
+    $('.task-detail').removeClass('hidden');
+    if ($('.index').hasClass('span8')){
+      $('.index').removeClass('span8');
+      $('.index').addClass('span5');
+    }
     var taskEditPage = new Breath.Views.TaskEdit({
       model: Breath.user.tasks().get(id)
     });

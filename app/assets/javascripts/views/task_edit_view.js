@@ -12,7 +12,8 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     'blur .form-description': 'updateTask',
     'click .completed': 'toggleComplete',
     'click .remove': 'removeTask',
-    'click .parent-task': 'showParent'
+    'click .parent-task': 'showParent',
+    'click .close': 'closeView'
   },
 
   addTag: function(event){
@@ -28,6 +29,14 @@ Breath.Views.TaskEdit = Backbone.View.extend({
         that.model.fetch();
       }
     })
+  },
+
+  closeView: function(event){
+    $('.index').removeClass('span5');
+    $('.index').addClass('span8');
+    $('.task-detail').addClass('hidden');
+    this.remove();
+    Backbone.history.navigate('close');
   },
 
   showParent: function(event){
