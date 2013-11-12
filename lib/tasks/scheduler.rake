@@ -1,4 +1,3 @@
-# Not done yet
 namespace :scheduler do
   desc "TODO"
   task reset: :environment do
@@ -13,6 +12,5 @@ namespace :scheduler do
     Assignment.destroy_all
     TagTask.destroy_all
     `rake db:seed`
-    `restart`
   end
 end
