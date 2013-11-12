@@ -4,7 +4,15 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
     'projects/:id': 'showProjectPage',
     'tasks/:id': 'showTaskEditPage',
     'projects/:proj/tasks/:id': 'showProjectTaskEditPage',
+    'search/:term': 'showSearchResults',
     'teams/:id': 'showTeamDetailPage'
+  },
+
+  showSearchResults: function(term){
+    var taskIndex = new Breath.Views.TaskIndex({
+      collection: Breath.user.tasks().searchTasks(term)
+    });
+    this._swapMainView(taskIndex);
   },
 
   showTeamDetailPage: function(id){

@@ -23,9 +23,11 @@ Breath.Views.TaskIndex = Backbone.View.extend({
   },
 
   render: function(){
+    var name = Backbone.history.fragment || "All";
+    console.log(name);
     var renderedContent = this.template({
       tasks: this.collection,
-      project: new Breath.Models.Project({name: "All", id: 0}),
+      project: new Breath.Models.Project({name: name, id: 0}),
       sortByDate: this.collection.sortByDueDate 
     });
     this.$el.html(renderedContent);

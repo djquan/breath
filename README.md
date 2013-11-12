@@ -18,15 +18,17 @@ Tech used:
 * Tasks
     * Tasks can be assigned to any member. Tasks can be assigned to multiple users.
     * Tasks can have subtasks. Subtasks can have subtask (on and on forever). 
-    * Tasks can be sorted by date, or a custom priority based off dragging and dropping tasks. 
+    * Tasks can be sorted by date, or a custom priority based off dragging and dropping tasks. (or starring tasks)
     * Users can comment on tasks that they are assigned to. 
     * Users can add tags to tasks
     * Users can upload files to tasks.
 * Hand rolled authentication system for easy customization 
+* Search
+   * Tasks can be searched by name or description.  
+   * Custom function in the Tasks collection to allow easier flexibility and customization.
 
 ##Upcoming features
 
-* Search
 * Team message board
 
 ##Known Issues
