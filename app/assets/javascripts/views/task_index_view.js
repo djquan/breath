@@ -11,6 +11,7 @@ Breath.Views.TaskIndex = Backbone.View.extend({
     'blur #form-task': 'submitTask',
     'click .tasks': 'showTask', 
     'click .complete-check': 'toggleComplete',
+    'click .stars': 'toggleStar',
     'click .sort': 'toggleSort'
   },
 
@@ -29,6 +30,25 @@ Breath.Views.TaskIndex = Backbone.View.extend({
     });
     this.$el.html(renderedContent);
     return this;
+  },
+
+  toggleStar: function(event){
+    var taskId = $(event.currentTarget).data('id')
+    var task = this.collection.get(taskId);
+    var that = this;
+    var completedVar = task.get('starred') ? false : true
+    task.save('starred', completedVar, {
+      success: function(obj){
+        if (obj.hasProject()) {
+          var project = Breath.user.projects().get(obj.get('project_id'));
+          project.tasks().get(taskId).save('starred', completedVar)
+          Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/'+ obj.id, {trigger: true})
+        } else {
+          Backbone.history.navigate('tasks/' + obj.id, {trigger: true})
+        }
+        that.collection.sort();
+      }
+    })
   },
 
   toggleComplete: function(event){

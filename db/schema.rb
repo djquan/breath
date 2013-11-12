@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108230717) do
+ActiveRecord::Schema.define(version: 20131112213836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,12 +90,14 @@ ActiveRecord::Schema.define(version: 20131108230717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order"
+    t.boolean  "starred",     default: false
   end
 
   add_index "tasks", ["creator_id"], name: "index_tasks_on_creator_id", using: :btree
   add_index "tasks", ["name"], name: "index_tasks_on_name", using: :btree
   add_index "tasks", ["parent_id"], name: "index_tasks_on_parent_id", using: :btree
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
+  add_index "tasks", ["starred"], name: "index_tasks_on_starred", using: :btree
 
   create_table "team_lists", force: true do |t|
     t.integer  "team_id"

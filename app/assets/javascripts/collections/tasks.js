@@ -6,7 +6,7 @@ Breath.Collections.Tasks = Backbone.Collection.extend({
     if (this.sortByDueDate){
       return [task.get('completed'),  due]
     } else{
-      return [task.get('completed'), task.get('order'),  due]
+      return [task.get('completed'), task.get('starred') * -1, task.get('order'),  due]
     }
   }
 })

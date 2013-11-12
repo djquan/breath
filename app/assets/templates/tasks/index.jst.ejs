@@ -11,12 +11,14 @@
 <% var completeClass = task.get('completed') ? 'completed-task' : 'incomplete-task' %>
 <% var checkedTask = task.get('completed') ? 'fa-check-square-o' : 'fa-square-o' %>
 <% var labelTask = task.get('completed') ? 'label-success' : 'label-important' %>
+<% var starred = task.get('starred')? 'fa-star' : 'fa-star-o' %>
 <div class="row-fluid tasks" data-id= "<%= task.id %>">
-  <div class="badger span3">
+  <div class="span3">
     <div class="badgey">
       <i class="fa fa-align-justify fa-lg"></i>
       <span class="badge badge-info"><%= i++ %></span>
-      <i class='fa <%= checkedTask %> fa-lg complete-check' data-id="<%= task.id %>"></i>
+      <i class='stars fa <%= starred %> fa-lg ' data-id="<%= task.id %>">
+      <i class='fa <%= checkedTask %> fa-lg complete-check' data-id="<%= task.id %>"></i></i>
      </div>
   </div>
   <div class="span7">

@@ -10,6 +10,7 @@ Breath.Views.ProjectView = Backbone.View.extend({
     'blur #form-task': 'submitTask',
     'click .tasks': 'showTask', 
     'click .complete-check': 'toggleComplete',
+    'click .stars': 'toggleStar',
     'click .sort': 'toggleSort'
   },
 
@@ -18,6 +19,20 @@ Breath.Views.ProjectView = Backbone.View.extend({
     this.model.tasks().sortByDueDate = this.model.tasks().sortByDueDate ? false : true;
     this.model.tasks().sort();
     this.render();
+  },
+
+
+  toggleStar: function(event){
+    var task = this.model.tasks().get($(event.currentTarget).data('id'));
+    var completedVar = task.get('starred') ? false : true
+    var that = this;
+    task.save('starred', completedVar, {
+      success: function(obj){
+        Breath.user.fetch();
+        Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/' + obj.id, {trigger: true})
+        that.model.tasks().sort();
+      }
+    })
   },
 
   render: function(){
