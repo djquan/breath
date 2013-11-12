@@ -1,6 +1,6 @@
 <h3 class="project-title"><%= project.escape('name')%></h3>
 <button class="sort btn btn-info">
-  Sort by <%= sortByDate ? "priority" : "due date" %>
+  <i class="fa fa-sort-amount-desc"></i><%= sortByDate ? "my priority" : "due date" %>
 </button><br>
 <div id="sortable">  
 <% var i = 1 %>
