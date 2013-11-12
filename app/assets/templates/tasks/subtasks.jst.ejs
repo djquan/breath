@@ -1,12 +1,14 @@
 <div class="task-edit-form">
 <% subtasks.each(function(subtask){ %>
   <% var completeClass = subtask.get('completed') ? 'completed-task' : 'incomplete-task' %>
-  <% var checkedTask = subtask.get('completed') ? 'checked' : '' %>
   <% var labelTask = subtask.get('completed') ? 'label-success' : 'label-important' %>
-  <input type='checkbox' <%= checkedTask %> 
-         class="subcomplete-check" data-id="<%= subtask.id %>">
-  <span class="subtask_list <%= completeClass %>" data-id="<%= subtask.id %>">
+  <% var checkedTask = subtask.get('completed') ? "fa-check-square-o" : "fa-square-o" %>
+  
+  <span class="subtask-list">
+    <i class='subcomplete-check fa <%= checkedTask %> fa-lg complete-check' data-id="<%= subtask.id %>"></i>
+    <span class="subtask_list <%= completeClass %>" data-id="<%= subtask.id %>">
      <%= subtask.escape('name') %>
+  </span>
   </span>
 
   <% if (subtask.get('creator_id') !== Breath.user.id){ %>
