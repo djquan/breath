@@ -20,6 +20,11 @@ Breath.Views.AssignmentView = Backbone.View.extend({
       data: { user: selectedUserID },
       success: function(){
         that.model.fetch();
+        $('.user-alerts').html('Successfully assigned to ' + Breath.users.get(selectedUserID).get('name'));
+        $('.user-alerts').show(300);
+        setTimeout(function(){
+          $('.user-alerts').hide(300)
+        }, 5000)
       },
     })
   },

@@ -22,6 +22,11 @@ Breath.Views.TeamDetail = Backbone.View.extend({
                team_id: this.model.id },
       success: function(obj){
         that.model.users().add(obj);
+        $('.user-alerts').html('Successfully added ' + obj.name);
+        $('.user-alerts').show(300);
+        setTimeout(function(){
+          $('.user-alerts').hide(300)
+        }, 5000)
       }
     })
   },
@@ -34,6 +39,11 @@ Breath.Views.TeamDetail = Backbone.View.extend({
       data: { team_id: this.model.id },
       success: function(obj){
         Breath.user.teams().remove(that.model);
+        $('.user-alerts').html('Left the team');
+        $('.user-alerts').show(300);
+        setTimeout(function(){
+          $('.user-alerts').hide(300)
+        }, 5000)
         Backbone.history.navigate('', {trigger:true})
       }
     })

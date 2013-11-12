@@ -61,6 +61,11 @@ Breath.Views.ProjectView = Backbone.View.extend({
         Breath.user.tasks().add(obj);
         Backbone.history.navigate('projects/' + obj.get('project_id') + '/tasks/' + obj.id, {trigger: true})
         that.model.tasks().sort();
+        $('.user-alerts').html('Added a task');
+        $('.user-alerts').show(300);
+        setTimeout(function(){
+          $('.user-alerts').hide(300)
+        }, 4000)
       }
     })
   }

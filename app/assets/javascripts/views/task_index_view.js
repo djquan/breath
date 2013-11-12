@@ -71,6 +71,11 @@ Breath.Views.TaskIndex = Backbone.View.extend({
       success: function(obj){
         Backbone.history.navigate('/tasks/' + obj.id, {trigger: true})
         that.collection.sort();
+        $('.user-alerts').html('Added a task');
+        $('.user-alerts').show(300);
+        setTimeout(function(){
+          $('.user-alerts').hide(300)
+        }, 4000)
       }
     })
   }
