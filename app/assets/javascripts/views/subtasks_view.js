@@ -10,7 +10,7 @@ Breath.Views.SubtaskView = Backbone.View.extend({
   events: {
     'click .subtask_list': 'showTask', 
     'click .subcomplete-check': 'toggleComplete',
-    'blur #form-task': 'submitSubtask',
+    'blur #form-subtask': 'submitSubtask',
   },
 
   showTask: function(event){

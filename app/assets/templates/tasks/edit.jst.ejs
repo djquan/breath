@@ -1,8 +1,10 @@
 <i class="fa fa-minus-square fa-2x close"></i><form class="task-edit-form" enctype="multipart/form-data">
   <% if(project){ %>
-    <span class="label label-info"><%= project.get('name') %></span>
-  <% } else { %>
-    <span class="label label-info">Personal</span>
+  <span class="label label-info project-tag" data-id="<%= project.id %>">
+    <%= project.get('name') %>
+  </span>
+  <% } else if (!task.get('parent_id')) { %>
+    <span class="label label-info">Unorganized</span>
   <% } %>
   <% if (task.get('parent_id')) { %>
     <span class="label label-success parent-task" data-id="<%=task.get('parent_id')%>">

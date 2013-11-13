@@ -14,6 +14,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     'click .remove': 'removeTask',
     'click .parent-task': 'showParent',
     'click .icon-tag': 'showTags',
+    'click .project-tag': 'showProjectPage',
     'click .close': 'closeView'
   },
 
@@ -22,6 +23,10 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     Backbone.history.navigate('search/' + destination, { trigger: true })
   },
 
+  showProjectPage: function(event){
+    var destination = $(event.currentTarget).data('id');
+    Backbone.history.navigate('projects/' + destination, { trigger: true })
+  },
 
   addTag: function(event){
     var payload = $(event.currentTarget).val();
@@ -65,7 +70,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     this.model.save('completed', completedVar, {
       success: function(obj){
         if (obj.hasProject()){
-          Breath.user.tasks().get(obj.id).save('completed', completedVar);
+          Breath.user.tasks().get(obj.id).save('completed', completedVar, { silent: true });
           Breath.user.tasks().sort();
         }
         that.model.fetch({silent: true});
@@ -77,11 +82,12 @@ Breath.Views.TaskEdit = Backbone.View.extend({
   updateTask: function(event){
     var target = $(event.currentTarget).attr('name');
     var payload = $(event.currentTarget).val();
+    if (this.model.get(target) === payload) { return }
     var that = this;
     this.model.save(target, payload, {
       success: function(obj){
         if (obj.hasProject()){
-          Breath.user.tasks().get(obj.id).save(target, payload);
+          Breath.user.tasks().get(obj.id).save(target, payload, { silent: true });
           Breath.user.tasks().sort();
         }
         that.model.fetch({silent: true});
