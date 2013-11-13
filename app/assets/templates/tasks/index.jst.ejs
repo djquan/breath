@@ -39,7 +39,9 @@
 <% }) %>
 </div>
 <br>
-<input placeholder="Task..." type="text" id="form-task" class="form-control">
+<% if (!project.escape('name').match(/Search results.*/)) { %>
+  <input placeholder="Task..." type="text" id="form-task" class="form-control">
+<% } %>
 
 <script>
 $(function(){
