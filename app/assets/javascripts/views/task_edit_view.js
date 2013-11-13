@@ -30,9 +30,12 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     $.ajax({
       type: "POST",
       url: "api/tasks/" + this.model.id + '/add_tag',
-      data: { name: $(event.currentTarget).val() },
+      data: { name: payload },
       success: function(){
         that.model.fetch();
+        if (that.model.hasProject()){
+          Breath.user.tasks().get(that.model.id).fetch();
+        }
       }
     })
   },
