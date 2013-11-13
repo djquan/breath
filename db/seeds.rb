@@ -28,7 +28,7 @@ pss.tasks.create(name: "Get astronauts on Daily Show", due: Date.today + 30, cre
 
 integration.tasks.create(name: "Run market strategy by legal department", due: Date.today + 5, completed: true, creator_id: 6)
 integration.tasks.create(name: "Talk to training to get astronaut's schedules", due: Date.today + 6, creator_id: 6)
-integration.tasks.create(name: "Talk with meteorology to check forecast for launch", due: Date.today + 12, creator_id: 6)
+integration.tasks.create(name: "Talk with meteorology to check forecast", due: Date.today + 12, creator_id: 6)
 
 sts = pss.tasks.create(name: "Get Bosses on Sunday talk shows", due: Date.today + 7, creator_id: 6, description: "Meet the press, face the nation")
 sts.assigned_users << [bm, bw]
