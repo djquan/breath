@@ -101,7 +101,12 @@ body{
 }
 .badgey i { margin-right: 5px }
 .task_list { position: absolute; bottom: 0; }
-.due-date { position: absolute; bottom: 0; }
+.due-date { 
+  position: absolute; 
+  bottom: 0; 
+  right: 0;
+  margin-right: 5px;
+}
 
 .tasks:hover{
   background: #34495e;

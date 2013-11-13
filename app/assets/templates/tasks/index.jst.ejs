@@ -31,7 +31,7 @@
     <% var date = new Date(task.get('due')) %>
     <span class="due-date label <%= labelTask %>">
       <%= (date.getUTCMonth() + 1) + '/' + date.getUTCDate() 
-          + '/' + date.getUTCFullYear() %> 
+          + '/' + date.getUTCFullYear().toString().substr(2,2) %> 
     </span><br>
     <% }%>
   </div>
