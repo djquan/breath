@@ -10,7 +10,8 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
 
   showSearchResults: function(term){
     var taskIndex = new Breath.Views.TaskIndex({
-      collection: Breath.user.tasks().searchTasks(term)
+      collection: Breath.user.tasks().searchTasks(term),
+      model: "Search results for: " + term
     });
     this._swapMainView(taskIndex);
   },
