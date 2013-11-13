@@ -20,7 +20,10 @@
 <span class="label label-info"><i class="fa fa-user"></i>   <%= user.get('name') %></span>
 <% }) %>
 
-<br>
+<% if (a_users.length > 0){ %>
+<%= "<br>" %>
+<% }; %>
+
 <span class="label label-inverse"><%= creatorName %></span> created this task on <%= creationDate.toLocaleDateString() + ' at ' + creationDate.toLocaleTimeString() %>
 <br><br>
 </div>
