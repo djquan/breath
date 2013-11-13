@@ -15,8 +15,13 @@ Breath.Collections.Tasks = Backbone.Collection.extend({
     var filtered = this.filter(function(model){
       if (model.get('description')){
         return model.get('name').match(searchTerm) || 
-               model.get('description').match(searchTerm);
-      } else { return model.get('name').match(searchTerm) }
+          model.get('description').match(searchTerm) ||
+          _.find(model.get('tags'), function(tag){ return tag.name.match(searchTerm) });
+      } 
+      else { 
+        return model.get('name').match(searchTerm) ||
+          _.find(model.get('tags'), function(tag){ return tag.name.match(searchTerm) });
+      }
     });
     return new Breath.Collections.Tasks(filtered);
   }

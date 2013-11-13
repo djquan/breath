@@ -19,6 +19,7 @@ end
 child(:tasks) do 
   attributes *Task.column_names 
   child(:comments) { attributes *Comment.column_names }
+  child(:tags) { attributes *Tag.column_names }
 end
 
 child(:teams) do

@@ -24,7 +24,7 @@ Tech used:
     * Users can upload files to tasks.
 * Hand rolled authentication system for easy customization 
 * Search
-   * Tasks can be searched by name or description.  
+   * Tasks can be searched by name, tag name, or description.  
    * Custom function in the Tasks collection to allow easier flexibility and customization.
 
 ##Upcoming features
@@ -33,6 +33,6 @@ Tech used:
 
 ##Known Issues
 
-Feel free to submit issue requests if you find bugs.
+Feel free to submit issues if you find bugs.
 
 [![Code Climate](https://codeclimate.com/github/djquan/breath.png)](https://codeclimate.com/github/djquan/breath)

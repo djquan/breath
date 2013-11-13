@@ -13,8 +13,15 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     'click .completed': 'toggleComplete',
     'click .remove': 'removeTask',
     'click .parent-task': 'showParent',
+    'click .icon-tag': 'showTags',
     'click .close': 'closeView'
   },
+
+  showTags: function(event){
+    var destination = $(event.currentTarget).data('id');
+    Backbone.history.navigate('search/' + destination, { trigger: true })
+  },
+
 
   addTag: function(event){
     var payload = $(event.currentTarget).val();
@@ -25,7 +32,6 @@ Breath.Views.TaskEdit = Backbone.View.extend({
       url: "api/tasks/" + this.model.id + '/add_tag',
       data: { name: $(event.currentTarget).val() },
       success: function(){
-        console.log('hello');
         that.model.fetch();
       }
     })

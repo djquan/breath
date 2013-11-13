@@ -20,7 +20,7 @@
   <%= tags.length > 0 ? '<br>' : "" %>
   <% tags.forEach(function(tag){ %>
     <span class="label label-warning"> 
-      <i class="icon-tag"></i> <%= tag.name %>
+      <i class="icon-tag" data-id="<%= tag.name %>"><%= tag.name %></i> 
     </span>
   <% }) %>
   <div class="error"></div>
