@@ -13,6 +13,12 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
       collection: Breath.user.tasks().searchTasks(term),
       model: "Search results for: " + term
     });
+    if ($('.loading-sidebar').length){
+      var sidebar = new Breath.Views.SidebarView({
+        model: Breath.user
+      });
+      $('.app-sidebar').html(sidebar.render().$el);
+    };
     this._swapMainView(taskIndex);
   },
 
@@ -30,6 +36,9 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
       setTimeout(function(){
         $('.task-detail').show(300);
       },150);
+    };
+    if ($('.loading').length){
+      this.showRootPage();
     };
     var project = Breath.user.projects().get(proj);
     var taskEditPage;
@@ -53,6 +62,10 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
       setTimeout(function(){
         $('.task-detail').show(300);
       },150);
+    };
+
+    if ($('.loading').length){
+      this.showRootPage();
     }
     var taskEditPage = new Breath.Views.TaskEdit({
       model: Breath.user.tasks().get(id)
@@ -75,6 +88,13 @@ Breath.Routers.AppRouter = Backbone.Router.extend({
     var projectPage = new Breath.Views.ProjectView({
       model: Breath.user.projects().get(id)
     });
+
+    if ($('.loading-sidebar').length){
+      var sidebar = new Breath.Views.SidebarView({
+        model: Breath.user
+      });
+      $('.app-sidebar').html(sidebar.render().$el);
+    }
     this._swapMainView(projectPage);
   },
 
