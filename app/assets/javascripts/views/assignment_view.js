@@ -24,7 +24,7 @@ Breath.Views.AssignmentView = Backbone.View.extend({
         $('.user-alerts').show(300);
         setTimeout(function(){
           $('.user-alerts').hide(300)
-        }, 4000)
+        }, 3000)
       },
     })
   },

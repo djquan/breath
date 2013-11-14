@@ -38,6 +38,11 @@ Breath.Views.SubtaskView = Backbone.View.extend({
           var project = Breath.user.projects().get(obj.get('project_id'));
           project.tasks().add(obj);
         }
+        $('.user-alerts').html("Subtask added");
+        $('.user-alerts').show(300);
+        setTimeout(function(){
+          $('.user-alerts').hide(300)
+        }, 3000)
         that.model.fetch();
         that.collection.sort();
       }

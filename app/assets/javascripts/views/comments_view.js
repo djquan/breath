@@ -21,6 +21,11 @@ Breath.Views.CommentView = Backbone.View.extend({
     comment.save({}, {
       success: function(obj){
         that.collection.add(obj)
+        $('.user-alerts').html('Comment added');
+        $('.user-alerts').show(300);
+        setTimeout(function(){
+          $('.user-alerts').hide(300)
+        }, 3000)
       }
     })
   },

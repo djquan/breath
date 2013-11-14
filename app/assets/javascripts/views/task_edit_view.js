@@ -41,6 +41,11 @@ Breath.Views.TaskEdit = Backbone.View.extend({
         if (that.model.hasProject()){
           Breath.user.tasks().get(that.model.id).fetch();
         }
+        $('.user-alerts').html("Tag successfully added");
+        $('.user-alerts').show(300);
+        setTimeout(function(){
+          $('.user-alerts').hide(300)
+        }, 3000)
       }
     })
   },
@@ -89,6 +94,11 @@ Breath.Views.TaskEdit = Backbone.View.extend({
         if (obj.hasProject()){
           Breath.user.tasks().get(obj.id).save(target, payload, { silent: true });
           Breath.user.tasks().sort();
+          $('.user-alerts').html('Task ' + target + ' successfully updated');
+          $('.user-alerts').show(300);
+          setTimeout(function(){
+            $('.user-alerts').hide(300)
+          }, 3000)
         }
         that.model.fetch({silent: true});
         that.model.collection.sort();
@@ -106,7 +116,7 @@ Breath.Views.TaskEdit = Backbone.View.extend({
         $('.user-alerts').show(300);
         setTimeout(function(){
           $('.user-alerts').hide(300)
-        }, 4000)
+        }, 3000)
       }
     });
   },
