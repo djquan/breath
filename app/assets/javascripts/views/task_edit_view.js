@@ -94,12 +94,12 @@ Breath.Views.TaskEdit = Backbone.View.extend({
         if (obj.hasProject()){
           Breath.user.tasks().get(obj.id).save(target, payload, { silent: true });
           Breath.user.tasks().sort();
-          $('.user-alerts').html('Task ' + target + ' successfully updated');
-          $('.user-alerts').show(300);
-          setTimeout(function(){
-            $('.user-alerts').hide(300)
-          }, 3000)
         }
+        $('.user-alerts').html('Task ' + target + ' successfully updated');
+        $('.user-alerts').show(300);
+        setTimeout(function(){
+          $('.user-alerts').hide(300)
+        }, 3000);
         that.model.fetch({silent: true});
         that.model.collection.sort();
       }
