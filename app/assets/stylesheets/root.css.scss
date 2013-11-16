@@ -17,7 +17,12 @@ body{
 
 .team-page{ margin-left: 5px; margin-bottom: 5px }
 .sort { margin-left: 5px; }
-.project-link:hover{ color: #3498db; }
+
+.project-link:hover{ 
+  color: #3498db; 
+  cursor: pointer;
+}
+
 .feature { margin-left: 5px; }
 
 .sidebar-header {
@@ -30,9 +35,15 @@ body{
   margin: 0px
 }
 
-.sidebar-header:hover{ color: #3498db; }
+.sidebar-header:hover{ 
+  color: #3498db; 
+  cursor: pointer; 
+}
 
-.task_list:hover{ color: #3498db; }
+.task_list:hover{ 
+  cursor: pointer; 
+  color: #3498db; 
+}
 
 .index {
   background: #ecf0f1;
@@ -72,6 +83,7 @@ body{
 }
 
 .completed:hover{
+  cursor: pointer;
   color: #3498db;
 }
 
@@ -99,8 +111,10 @@ body{
 .stars{
   margin-right: 5px;
 }
+
 .badgey i { margin-right: 5px }
 .task_list { position: absolute; bottom: 0; }
+
 .due-date { 
   position: absolute; 
   bottom: 0; 
@@ -111,6 +125,7 @@ body{
 .tasks:hover{
   background: #2c3e50;
   color: #3498db; 
+  cursor: pointer;
 }
 
 .file-form{ color: #ecf0f1; }
@@ -123,12 +138,24 @@ body{
   padding: 40px;
 }
 
-.subtask-list:hover { color: #3498db; }
+.subtask-list:hover { 
+  cursor: pointer;
+  color: #3498db;
+}
 
 .sortbutton { padding-left: 5px }
 
-.icon-tag:hover { color: #34495e; }
-.project-tag:hover { color: #34495e; }
-.parent-task:hover { color: #34495e; }
+.icon-tag:hover { 
+  cursor: pointer;
+  color: #34495e; 
+}
+.project-tag:hover { 
+  cursor: pointer;
+  color: #34495e; 
+}
+.parent-task:hover { 
+  color: #34495e; 
+  cursor: pointer;
+}
 
 #form-task { margin-left: 10px }

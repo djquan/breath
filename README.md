@@ -29,7 +29,7 @@ Tech used:
 
 ##Upcoming features
 
-* Team message board
+* Implement node.js and socket.io to help with scaling.  That way, events, when updated, can cause other users automatically to pull down the updates. 
 
 ##Known Issues
 
