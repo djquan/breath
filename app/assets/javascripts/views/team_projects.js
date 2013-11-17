@@ -6,7 +6,12 @@ Breath.Views.TeamProject = Backbone.View.extend({
 
   events: {
     'blur #form-team': 'submitPersonal',
-    'click .sidebar-header': 'showTeamPage' 
+    'click .sidebar-header': 'showTeamPage',
+    'keyup #form-team': 'blur'
+  },
+
+  blur: function(event){
+    if (event.which === 13) { event.currentTarget.blur() }
   },
 
   render: function(){

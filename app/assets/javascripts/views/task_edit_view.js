@@ -8,6 +8,8 @@ Breath.Views.TaskEdit = Backbone.View.extend({
 
   events: {
     'blur .tag-form': 'addTag',
+    'keyup .tag-form': 'blur',
+    'keyup .update-task': 'blur',
     'blur .update-task': 'updateTask',
     'blur .form-description': 'updateTask',
     'click .completed': 'toggleComplete',
@@ -16,6 +18,10 @@ Breath.Views.TaskEdit = Backbone.View.extend({
     'click .icon-tag': 'showTags',
     'click .project-tag': 'showProjectPage',
     'click .close': 'closeView'
+  },
+
+  blur: function(event){
+    if (event.which === 13) { event.currentTarget.blur() }
   },
 
   showTags: function(event){

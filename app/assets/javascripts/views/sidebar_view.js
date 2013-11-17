@@ -10,7 +10,13 @@ Breath.Views.SidebarView = Backbone.View.extend({
     'click .task_index': "showTaskIndex",
     'click .project-link': "showDetail",
     'blur #search-tasks': "searchTask",
-    'blur #new-team': "addTeam"
+    'blur #new-team': "addTeam",
+    'keyup #search-tasks': 'blur',
+    'keyup #new-team': 'blur',
+  },
+
+  blur: function(event){
+    if (event.which === 13) { event.currentTarget.blur() }
   },
 
   showDetail: function(event){

@@ -9,10 +9,15 @@ Breath.Views.TaskIndex = Backbone.View.extend({
 
   events: {
     'blur #form-task': 'submitTask',
+    'keyup #form-task': 'blur',
     'click .tasks': 'showTask', 
     'click .complete-check': 'toggleComplete',
     'click .stars': 'toggleStar',
     'click .sort': 'toggleSort'
+  },
+
+  blur: function(event){
+    if (event.which === 13) { event.currentTarget.blur() }
   },
 
   toggleSort: function(event){

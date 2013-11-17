@@ -7,6 +7,11 @@ Breath.Views.PersonalProjects = Backbone.View.extend({
 
   events: {
     'blur #form-personal': 'submitPersonal',
+    'keyup #form-personal': 'blur'
+  },
+
+  blur: function(event){
+    if (event.which === 13) { event.currentTarget.blur() }
   },
 
   render: function(){

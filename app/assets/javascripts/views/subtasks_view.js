@@ -11,6 +11,11 @@ Breath.Views.SubtaskView = Backbone.View.extend({
     'click .subtask_list': 'showTask', 
     'click .subcomplete-check': 'toggleComplete',
     'blur #form-subtask': 'submitSubtask',
+    'keyup #form-subtask': 'blur',
+  },
+
+  blur: function(event){
+    if (event.which === 13) { event.currentTarget.blur() }
   },
 
   showTask: function(event){

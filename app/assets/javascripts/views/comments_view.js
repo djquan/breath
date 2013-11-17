@@ -6,7 +6,12 @@ Breath.Views.CommentView = Backbone.View.extend({
   },
 
   events: {
-    'blur .comment-box': 'sendComment'
+    'blur .comment-box': 'sendComment',
+    'keyup .comment-box': 'blur',
+  },
+
+  blur: function(event){
+    if (event.which === 13) { event.currentTarget.blur() }
   },
 
   sendComment: function(event){
