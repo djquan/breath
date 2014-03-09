@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @current = User.find(current_user.id)
-    @assigned_tasks = @current.assigned_tasks
+    @current = User.where(id: current_user.id).includes({ tasks: [:comments, :tags]}, { projects: {:tasks => [:comments, :tags]} } , { assigned_tasks:  [:comments, :tags] }, { teams: { projects: { tasks: [:comments, :tags] }}}).first
     render 'users/show' 
   end
 

@@ -1,7 +1,7 @@
 object @current
 
 attributes(:id, :name, :email)
-child(:projects) do
+child(@current.projects => :projects) do
   attributes(:id, :name, :team_id) 
   child(:tasks) do 
     attributes *Task.column_names 
@@ -10,19 +10,19 @@ child(:projects) do
   end
 end
 
-child(@assigned_tasks => :assigned_tasks) do 
+child(@current.assigned_tasks => :assigned_tasks) do 
   attributes *Task.column_names 
   child(:comments) { attributes *Comment.column_names }
   child(:tags) { attributes *Tag.column_names }
 end
 
-child(:tasks) do 
+child(@current.tasks => :tasks) do 
   attributes *Task.column_names 
   child(:comments) { attributes *Comment.column_names }
   child(:tags) { attributes *Tag.column_names }
 end
 
-child(:teams) do
+child(@current.teams => :teams) do
   attributes(:id, :name)
   child(:projects) do
     attributes(:id, :name, :team_id) 
