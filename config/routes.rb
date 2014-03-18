@@ -1,10 +1,14 @@
 Breath::Application.routes.draw do
   get "app", to: "root#root"
   resources :users
-  resource :session, only: [:create, :destroy, :update]
+  resource :session, only: [:create, :destroy]
+
+  put "session", to: "sessions#create"
 
   namespace "api", defaults: { format: :json } do 
     resources :projects, only: [:index, :show, :create, :destroy, :update]
+    put "tasks", to: "tasks#create"
+
     resources :tasks, only: [:index, :show, :create, :destroy, :update] do
       post "assign_user", to: "tasks#assign_user"
       post "add_tag", to: "tags#add_tag"
