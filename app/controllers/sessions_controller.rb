@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  protect_from_forgery except: :create
+
   def new
     if current_user
       redirect_to app_url

@@ -1,4 +1,6 @@
 class Api::TasksController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def create
     task = Task.new(task_params)
     task.creator_id = current_user.id
