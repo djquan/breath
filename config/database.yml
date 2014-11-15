@@ -10,9 +10,6 @@ development:
   encoding: unicode
   pool: 5
   timeout: 5000
-  username: postgres
-  password:
-  host: db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,3 +25,9 @@ production:
   database: db/production
   pool: 5
   timeout: 5000
+  database: postgres
+  encoding: unicode
+  timeout: 5000
+  username: postgres
+  password:
+  host: db
