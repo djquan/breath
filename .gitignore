@@ -11,10 +11,12 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+breath.sock
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
 /coverage
+/public/assets/
 # Ignore application configuration
 /config/application.yml
 /config/secrets.yml

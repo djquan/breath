@@ -4,7 +4,7 @@ db:
     - "5432"
 web:
   build: .
-  command: bundle exec rails s
+  command: bundle exec puma -e production -b unix:///myapp/breath.sock
   volumes:
     - .:/myapp
   ports:
