@@ -1,13 +1,13 @@
 db:
   image: postgres
   ports:
-    - "5432"
+    - "127.0.0.1:5432:5432"
 web:
   build: .
-  command: bundle exec puma -e production -b unix:///myapp/breath.sock
+  command: bundle exec puma -e production -p 3000
   volumes:
     - .:/myapp
   ports:
-    - "3000:3000"
+    - "127.0.0.1:3000:3000"
   links:
     - db
