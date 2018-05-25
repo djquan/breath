@@ -1,8 +1,8 @@
-#Breath
+# Breath
 
-_an Asana clone_. Open source group task manager.
+Open source group task manager.
 
-##Features
+## Features
 
 * Teams
     * Users can be invited to any team. 
