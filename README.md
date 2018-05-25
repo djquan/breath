@@ -20,5 +20,3 @@ _an Asana clone_. Open source group task manager.
 * Search
    * Tasks can be searched by name, tag name, or description.  
    * Custom function in the Tasks collection to allow easier flexibility and customization.
-
-[![Code Climate](https://codeclimate.com/github/djquan/breath.png)](https://codeclimate.com/github/djquan/breath)
