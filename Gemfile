@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
 
-gem 'rails', '4.2.0'
-gem 'puma'
-gem 'pg'
+gem 'rails', '4.2.8'
+gem 'puma', '3.7.1'
+gem 'pg', '~> 0.18'
+
 
 group :production do
   gem 'newrelic_rpm'
@@ -19,8 +19,8 @@ gem 'jbuilder'
 gem 'backbone-on-rails'
 gem 'rabl'
 gem 'twitter-bootstrap-rails',  '2.2.8'
-gem 'therubyracer'
-gem 'less-rails'
+gem 'therubyracer', '0.12.3'
+gem "less-rails", "~> 2.8.0"
 gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'

@@ -5,8 +5,8 @@ development:
   pool: 5
   timeout: 5000
   username: postgres
-  password:
-  host: db
+  password: postgres
+  host: localhost
 
 test:
   adapter: sqlite3
