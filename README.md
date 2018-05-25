@@ -2,12 +2,6 @@
 
 _an Asana clone_. Open source group task manager.
 
-Tech used:
-
-* Backbone.js
-* Rails 4.0.1
-* Javascript + jQuery. 
-
 ##Features
 
 * Teams
@@ -26,13 +20,5 @@ Tech used:
 * Search
    * Tasks can be searched by name, tag name, or description.  
    * Custom function in the Tasks collection to allow easier flexibility and customization.
-
-##Upcoming features
-
-* Implement node.js and socket.io to help with scaling.  That way, events, when updated, can cause other users automatically to pull down the updates. 
-
-##Known Issues
-
-Feel free to submit issues if you find bugs.
 
 [![Code Climate](https://codeclimate.com/github/djquan/breath.png)](https://codeclimate.com/github/djquan/breath)
