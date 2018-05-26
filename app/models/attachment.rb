@@ -5,4 +5,5 @@ class Attachment < ActiveRecord::Base
 
   validates :task_attachment, attachment_presence: true
   validates_attachment_size :task_attachment, less_than: 2.megabytes
+  do_not_validate_attachment_file_type :task_attachment
 end

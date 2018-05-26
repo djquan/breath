@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20131112213836) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "assignments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "task_id"
@@ -23,8 +20,8 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.datetime "updated_at"
   end
 
-  add_index "assignments", ["task_id"], name: "index_assignments_on_task_id", using: :btree
-  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id", using: :btree
+  add_index "assignments", ["task_id"], name: "index_assignments_on_task_id"
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "task_id"
@@ -36,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.datetime "task_attachment_updated_at"
   end
 
-  add_index "attachments", ["task_id"], name: "index_attachments_on_task_id", using: :btree
+  add_index "attachments", ["task_id"], name: "index_attachments_on_task_id"
 
   create_table "comments", force: :cascade do |t|
     t.string   "body"
@@ -46,8 +43,8 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commenter_id"], name: "index_comments_on_commenter_id", using: :btree
-  add_index "comments", ["task_id"], name: "index_comments_on_task_id", using: :btree
+  add_index "comments", ["commenter_id"], name: "index_comments_on_commenter_id"
+  add_index "comments", ["task_id"], name: "index_comments_on_task_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -57,9 +54,9 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.integer  "team_id",    default: 0
   end
 
-  add_index "projects", ["name"], name: "index_projects_on_name", using: :btree
-  add_index "projects", ["owner_id"], name: "index_projects_on_owner_id", using: :btree
-  add_index "projects", ["team_id"], name: "index_projects_on_team_id", using: :btree
+  add_index "projects", ["name"], name: "index_projects_on_name"
+  add_index "projects", ["owner_id"], name: "index_projects_on_owner_id"
+  add_index "projects", ["team_id"], name: "index_projects_on_team_id"
 
   create_table "tag_tasks", force: :cascade do |t|
     t.integer  "task_id"
@@ -68,8 +65,8 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.datetime "updated_at"
   end
 
-  add_index "tag_tasks", ["tag_id"], name: "index_tag_tasks_on_tag_id", using: :btree
-  add_index "tag_tasks", ["task_id"], name: "index_tag_tasks_on_task_id", using: :btree
+  add_index "tag_tasks", ["tag_id"], name: "index_tag_tasks_on_tag_id"
+  add_index "tag_tasks", ["task_id"], name: "index_tag_tasks_on_task_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -77,7 +74,7 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.datetime "updated_at"
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
+  add_index "tags", ["name"], name: "index_tags_on_name"
 
   create_table "tasks", force: :cascade do |t|
     t.string   "description"
@@ -93,11 +90,11 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.boolean  "starred",     default: false
   end
 
-  add_index "tasks", ["creator_id"], name: "index_tasks_on_creator_id", using: :btree
-  add_index "tasks", ["name"], name: "index_tasks_on_name", using: :btree
-  add_index "tasks", ["parent_id"], name: "index_tasks_on_parent_id", using: :btree
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
-  add_index "tasks", ["starred"], name: "index_tasks_on_starred", using: :btree
+  add_index "tasks", ["creator_id"], name: "index_tasks_on_creator_id"
+  add_index "tasks", ["name"], name: "index_tasks_on_name"
+  add_index "tasks", ["parent_id"], name: "index_tasks_on_parent_id"
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
+  add_index "tasks", ["starred"], name: "index_tasks_on_starred"
 
   create_table "team_lists", force: :cascade do |t|
     t.integer  "team_id"
@@ -106,9 +103,9 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.datetime "updated_at"
   end
 
-  add_index "team_lists", ["team_id", "user_id"], name: "index_team_lists_on_team_id_and_user_id", unique: true, using: :btree
-  add_index "team_lists", ["team_id"], name: "index_team_lists_on_team_id", using: :btree
-  add_index "team_lists", ["user_id"], name: "index_team_lists_on_user_id", using: :btree
+  add_index "team_lists", ["team_id", "user_id"], name: "index_team_lists_on_team_id_and_user_id", unique: true
+  add_index "team_lists", ["team_id"], name: "index_team_lists_on_team_id"
+  add_index "team_lists", ["user_id"], name: "index_team_lists_on_user_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
@@ -116,7 +113,7 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.datetime "updated_at"
   end
 
-  add_index "teams", ["name"], name: "index_teams_on_name", using: :btree
+  add_index "teams", ["name"], name: "index_teams_on_name"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -127,7 +124,7 @@ ActiveRecord::Schema.define(version: 20131112213836) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["name"], name: "index_users_on_name", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["name"], name: "index_users_on_name"
 
 end
