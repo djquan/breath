@@ -1,0 +1,7 @@
+image: ruby
+
+before_script:
+  - bundle exec rake db:migrate
+
+rake:
+  - bundle exec rake
