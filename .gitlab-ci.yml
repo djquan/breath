@@ -2,8 +2,8 @@ image: ruby
 
 before_script:
   - bundle install
-  - bundle exec rake db:migrate
+  - RAILS_ENV=test bundle exec rake db:migrate
 
 rake:
   script: 
-  - bundle exec rake
+  - RAILS_ENV=test bundle exec rake
