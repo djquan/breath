@@ -9,6 +9,7 @@ docker_build:
   tags:
   - host
   script: 
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.quan.io
   - docker build -t registry.quan.io/dan/breath:$CI_COMMIT_SHA .
   - docker push registry.quan.io/dan/breath:$CI_COMMIT_SHA
 
