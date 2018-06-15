@@ -9,6 +9,8 @@ rake:
   - RAILS_ENV=test bundle exec rake
 
 docker_build:
+  tags:
+  - host
   script:
   - docker build -t registry.quan.io/dan/breath
   - docker push registry.quan.io/dan/breath
