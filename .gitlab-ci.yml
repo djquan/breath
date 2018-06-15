@@ -1,21 +1,22 @@
 image: ruby
 
 stages:
-  - build
   - test
+  - artifact
 
-docker_build:
-  stage: build
+rake:
+  stage: test
+  script:
+  - bundle install
+  - RAILS_ENV=test bundle exec rake db:migrate
+  - RAILS_ENV=test bundle exec rake
+
+push_to_dockerhub:
+  stage: artifact
   tags:
   - host
-  script: 
+  script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.quan.io
   - docker build -t registry.quan.io/dan/breath:$CI_COMMIT_SHA .
   - docker push registry.quan.io/dan/breath:$CI_COMMIT_SHA
 
-rake:
-  stage: test
-  image: registry.quan.io/dan/breath:$CI_COMMIT_SHA
-  script: 
-  - RAILS_ENV=test bundle exec rake db:migrate
-  - RAILS_ENV=test bundle exec rake
