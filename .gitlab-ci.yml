@@ -1,12 +1,11 @@
 image: ruby
 
 stages:
-  - build
   - test
   - push
 
 docker_build:
-  stage: build
+  stage: test
   tags:
   - host
   script: 
@@ -14,8 +13,8 @@ docker_build:
 
 rake:
   stage: test
-  image: registry.quan.io/dan/breath:$CI_COMMIT_SHA
   script: 
+  - bundle install
   - RAILS_ENV=test bundle exec rake db:migrate
   - RAILS_ENV=test bundle exec rake
 
