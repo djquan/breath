@@ -3,11 +3,11 @@ image: ruby
 docker_build:
   tags:
   - host
-  script:
-  - docker build -t registry.quan.io/dan/breath .
+  script: 
+  - docker build -t registry.quan.io/dan/breath:$CI_COMMIT_SHA .
 
 rake:
-  image: registry.quan.io/dan/breath
+  image: registry.quan.io/dan/breath:$CI_COMMIT_SHA
   script: 
   - RAILS_ENV=test bundle exec rake db:migrate
   - RAILS_ENV=test bundle exec rake
@@ -16,4 +16,4 @@ docker_push:
   tags:
   - host
   script:
-  - docker push registry.quan.io/dan/breath
+    - docker push registry.quan.io/dan/breath:$CI_COMMIT_SHA
