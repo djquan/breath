@@ -4,4 +4,5 @@ before_script:
   - bundle exec rake db:migrate
 
 rake:
+  script: 
   - bundle exec rake
