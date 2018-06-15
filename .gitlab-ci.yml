@@ -1,14 +1,19 @@
 image: ruby
 
-rake:
-  script: 
-  - bundle install
-  - RAILS_ENV=test bundle exec rake db:migrate
-  - RAILS_ENV=test bundle exec rake
-
 docker_build:
   tags:
   - host
   script:
-  - docker build -t registry.quan.io/dan/breath
+  - docker build -t registry.quan.io/dan/breath .
+
+rake:
+  image: registry.quan.io/dan/breath
+  script: 
+  - RAILS_ENV=test bundle exec rake db:migrate
+  - RAILS_ENV=test bundle exec rake
+
+docker_push:
+  tags:
+  - host
+  script:
   - docker push registry.quan.io/dan/breath
