@@ -1,6 +1,6 @@
 # Breath
 
-Open source group task manager.
+Open source group task manager
 
 ## Features
 
