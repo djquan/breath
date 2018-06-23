@@ -48,3 +48,4 @@ group :test do
   gem 'faker'
   gem 'shoulda'
 end
+
