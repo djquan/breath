@@ -7,7 +7,7 @@ ADD Gemfile /myapp/Gemfile
 RUN bundle install --without development test
 ADD . /myapp
 
-RUN bundle exec rake assets:precompile
+RUN RAILS_ENV=production bundle exec rake assets:precompile
 
 EXPOSE 3000
 
