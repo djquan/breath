@@ -1,6 +1,8 @@
+source "https://rubygems.org"
+
 gem 'rails', '4.2.8'
-gem 'puma', '3.7.1'
-gem 'pg', '~> 0.18'
+gem 'puma', '~> 3.11'
+gem 'pg', '~> 0.18', require: true
 
 
 group :production do

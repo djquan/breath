@@ -1,6 +1,8 @@
 # Breath
 
-Open source group task manager
+[![build](https://ci.quan.io/api/badges/djquan/breath/status.svg)](https://ci.quan.io/djquan/breath)
+
+Open source group task manager.
 
 ## Features
 

@@ -5,3 +5,5 @@ WORKDIR /myapp
 ADD Gemfile /myapp/Gemfile
 RUN bundle install
 ADD . /myapp
+
+EXPOSE 3000

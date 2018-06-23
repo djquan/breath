@@ -715,7 +715,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.2)
-    puma (3.7.1)
+    puma (3.11.4)
     rabl (0.13.1)
       activesupport (>= 2.3.14)
     rack (1.6.10)
@@ -790,7 +790,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sprockets (2.12.4)
+    sprockets (2.12.5)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -846,7 +846,7 @@ DEPENDENCIES
   paperclip
   pg (~> 0.18)
   pry-rails
-  puma (= 3.7.1)
+  puma (~> 3.11)
   rabl
   rails (= 4.2.8)
   rails-erd

@@ -5,15 +5,15 @@ pipeline:
       - bundle install
       - RAILS_ENV=test bundle exec rake db:migrate
       - RAILS_ENV=test bundle exec rake
-  # docker:
-  #   image: plugins/docker
-  #   repo: registry.quan.io/dan/quan-io
-  #   registry: registry.quan.io
-  #   secrets: [ docker_username, docker_password ]
-  #   branches: [ master ]
-  #   tags:
-  #     - latest
-  #     - "${DRONE_COMMIT_SHA:0:8}"
+  docker:
+    image: plugins/docker
+    repo: registry.quan.io/dan/breath
+    registry: registry.quan.io
+    secrets: [ docker_username, docker_password ]
+    branches: [ master ]
+    tags:
+      - latest
+      - "${DRONE_COMMIT_SHA:0:8}"
   # deploy:
   #   image: quay.io/honestbee/drone-kubernetes
   #   deployment: quan-io
