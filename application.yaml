@@ -22,6 +22,7 @@ spec:
       containers:
       - name: breath
         image: registry.quan.io/dan/breath:latest
+        command: ["bundle", "exec", "puma", "-p3000", "-eproduction"]
         ports:
         - containerPort: 3000
         livenessProbe:
@@ -30,6 +31,21 @@ spec:
             port: 3000
           initialDelaySeconds: 30
           periodSeconds: 3
+        env:
+          - name: RAILS_ENV
+            value: production
+          - name: POSTGRES_HOST
+            value: postgres-postgresql
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-postgresql
+                key: postgres-password
+          - name: RAILS_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: breath
+                key: secret
       imagePullSecrets:
         - name: regcred
 ---
