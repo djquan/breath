@@ -843,6 +843,7 @@ DEPENDENCIES
   jquery-ui-rails
   less-rails (~> 2.8.0)
   newrelic_rpm
+  nokogiri (~> 1.8.2)
   paperclip
   pg (~> 0.18)
   pry-rails
