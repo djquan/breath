@@ -21,7 +21,7 @@ pipeline:
       - /bin/kubectl_setup.sh
       - "kubectl apply -f job.yaml"
       - "sleep 40"
-      - "kubectl set image deployment/quan-io quan-io=registry.quan.io/dan/breath:${DRONE_COMMIT_SHA:0:8} --record"
+      - "kubectl set image deployment/breath breath=registry.quan.io/dan/breath:${DRONE_COMMIT_SHA:0:8} --record"
       - "kubectl delete -f job.yaml"
     when:
       branch: master
