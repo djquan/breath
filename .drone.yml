@@ -14,11 +14,14 @@ pipeline:
     tags:
       - latest
       - "${DRONE_COMMIT_SHA:0:8}"
-  # deploy:
-  #   image: quay.io/honestbee/drone-kubernetes
-  #   deployment: quan-io
-  #   repo: registry.quan.io/dan/quan-io
-  #   container: quan-io
-  #   secrets: [ kubernetes_server, kubernetes_cert, kubernetes_token ]
-  #   tag: "${DRONE_COMMIT_SHA:0:8}"
-  #   branches: [ master ]
+  deploy:
+    image: registry.quan.io/dan/kubectl-docker:22266016
+    secrets: [ kubernetes_server, kubernetes_crt, kubernetes_token ]
+    commands:
+      - /bin/kubectl_setup.sh
+      - "kubectl apply -f job.yaml"
+      - "sleep 40"
+      - "kubectl set image deployment/quan-io quan-io=registry.quan.io/dan/quan-io:${DRONE_COMMIT_SHA:0:8} --record"
+      - "kubectl delete -f job.yaml"
+    when:
+      branch: master
