@@ -9,7 +9,7 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-gem 'nokogiri', '~> 1.8.2'
+gem 'nokogiri', '~> 1.8.3'
 gem 'sass-rails', '~> 4.0.4'
 gem 'uglifier', '>= 2.5.3'
 gem 'coffee-rails', '~> 4.1.0'
