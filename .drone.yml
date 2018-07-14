@@ -14,14 +14,3 @@ pipeline:
     tags:
       - latest
       - "${DRONE_COMMIT_SHA:0:8}"
-  deploy:
-    image: registry.quan.io/dan/kubectl-docker:22266016
-    secrets: [ kubernetes_server, kubernetes_crt, kubernetes_token ]
-    commands:
-      - /bin/kubectl_setup.sh
-      - "kubectl apply -f job.yaml"
-      - "sleep 40"
-      - "kubectl set image deployment/breath breath=registry.quan.io/dan/breath:${DRONE_COMMIT_SHA:0:8} --record"
-      - "kubectl delete -f job.yaml"
-    when:
-      branch: master
