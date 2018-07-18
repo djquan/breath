@@ -6,8 +6,6 @@ services:
     restart: always
     networks:
       - web
-    ports:
-      - "3000:3000"
     expose:
       - "3000"
     command: ["bundle", "exec", "puma", "-p3000", "-eproduction"]
@@ -20,12 +18,14 @@ services:
     labels:
       - "traefik.docker.network=web"
       - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:breath.io"
+      - "traefik.basic.frontend.rule=Host:breath.quan.io"
       - "traefik.basic.port=3000"
   postgres:
     image: postgres
-
-
+    networks:
+      - web
+    volumes:
+      - "/var/lib/postgresql/data:/var/lib/postgresql/data"
 networks:
   web:
     external: true
