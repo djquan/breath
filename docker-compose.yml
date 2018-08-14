@@ -22,6 +22,7 @@ services:
       - "traefik.basic.port=3000"
   postgres:
     image: postgres
+    restart: always
     networks:
       - web
     volumes:
