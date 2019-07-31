@@ -4,29 +4,17 @@ services:
   breath:
     image: registry.quan.io/dan/breath:latest
     restart: always
-    networks:
-      - web
-    expose:
-      - "3000"
+    ports:
+      - "3000:3000"
     command: ["bundle", "exec", "puma", "-p3000", "-eproduction"]
     environment:
       - POSTGRES_HOST=postgres
     env_file:
-      - secrets.env
+      - /secrets/breath/secrets.env
     depends_on:
       - "postgres"
-    labels:
-      - "traefik.docker.network=web"
-      - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:breath.quan.io"
-      - "traefik.basic.port=3000"
   postgres:
     image: postgres
     restart: always
-    networks:
-      - web
     volumes:
       - "/var/lib/postgresql/data:/var/lib/postgresql/data"
-networks:
-  web:
-    external: true
