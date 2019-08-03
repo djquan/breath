@@ -2,7 +2,7 @@
 
 [![build](https://ci.quan.io/app/rest/builds/buildType:\(id:Breath_Build\)/statusIcon)](http://ci.quan.io/viewType.html?buildTypeId=Breath_Build&guest=1)
 
-Open source group task manager.
+Open source group task manager
 
 ## Features
 
