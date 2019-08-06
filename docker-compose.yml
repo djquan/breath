@@ -1,5 +1,4 @@
-version: "2.1"
-
+version: "3"
 services:
   breath:
     image: registry.quan.io/dan/breath:latest
@@ -7,14 +6,8 @@ services:
     ports:
       - "3000:3000"
     command: ["bundle", "exec", "puma", "-p3000", "-eproduction"]
+    network_mode: "host"
     environment:
-      - POSTGRES_HOST=postgres
+      - RAILS_ENV=production
     env_file:
       - /secrets/breath/secrets.env
-    depends_on:
-      - "postgres"
-  postgres:
-    image: postgres:10
-    restart: always
-    volumes:
-      - "/var/lib/postgresql/data:/var/lib/postgresql/data"

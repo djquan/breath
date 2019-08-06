@@ -20,6 +20,6 @@ production:
   encoding: unicode
   pool: 5
   timeout: 5000
-  username: postgres
+  username: breath
   password: <%= ENV["POSTGRES_PASSWORD"] %>
-  host: <%= ENV["POSTGRES_HOST"] %>
+  host: localhost
