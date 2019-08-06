@@ -23,3 +23,4 @@ production:
   username: breath
   password: <%= ENV["POSTGRES_PASSWORD"] %>
   host: localhost
+  port: 5433
