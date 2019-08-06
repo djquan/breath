@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  database: development
+  database: breath_development
   encoding: unicode
   pool: 5
   timeout: 5000
@@ -16,7 +16,7 @@ test:
 
 production:
   adapter: postgresql
-  database: production
+  database: breath_production
   encoding: unicode
   pool: 5
   timeout: 5000
