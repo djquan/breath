@@ -22,5 +22,5 @@ production:
   timeout: 5000
   username: breath
   password: <%= ENV["POSTGRES_PASSWORD"] %>
-  host: localhost
-  port: 5433
+  host: <%= ENV.fetch("POSTGRES_HOST", "localhost") %>
+  port: <%= ENV.fetch("POSTGRES_PORT", "5433") %>
