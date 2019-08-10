@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate-breath
+  namespace: breath
+spec:
+  template:
+    spec:
+      containers:
+      - name: migrate
+        image: registry.quan.io/dan/breath:latest
+        command: ["bundle", "exec", "rake", "db:migrate"]
+        env:
+          - name: RAILS_ENV
+            value: production
+          - name: POSTGRES_HOST
+            valueFrom:
+              secretKeyRef:
+                name: postgres
+                key: postgres-host
+          - name: POSTGRES_PORT
+            value: "25060"
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres
+                key: postgres-password
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Never
+  backoffLimit: 4
