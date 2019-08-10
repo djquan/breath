@@ -8,8 +8,10 @@ spec:
   selector:
     matchLabels:
       app: breath
-  replicas: 1
+  replicas: 2
   strategy:
+    rollingUpdate:
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
