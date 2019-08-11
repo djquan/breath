@@ -1,0 +1,105 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: breath
+  namespace: breath
+spec:
+  selector:
+    matchLabels:
+      app: breath
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: breath
+    spec:
+      containers:
+      - name: breath
+        image: registry.quan.io/dan/breath:latest
+        command: ["bundle", "exec", "puma", "-p3000", "-eproduction"]
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "130Mi"
+            cpu: "300m"
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 45
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 0
+          successThreshold: 1
+          failureThreshold: 3
+        env:
+          - name: RAILS_ENV
+            value: production
+          - name: POSTGRES_HOST
+            valueFrom:
+              secretKeyRef:
+                name: postgres
+                key: postgres-host
+          - name: POSTGRES_PORT
+            value: "25060"
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres
+                key: postgres-password
+          - name: RAILS_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: breath
+                key: secret
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: breath-service
+  namespace: breath
+spec:
+  selector:
+    app: breath
+  ports:
+    - protocol: TCP
+      port: 3000
+      name: web
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: breath-ingress
+  namespace: breath
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - hosts:
+    - breath.quan.io
+    secretName: letsencrypt-prod
+  rules:
+  - host: breath.quan.io
+    http:
+      paths:
+      - backend:
+          serviceName: breath-service
+          servicePort: 3000
