@@ -6,11 +6,11 @@ gem 'rails', '4.2.11'
 gem 'puma', '~> 3.11'
 gem 'pg', '~> 0.18', require: true
 
-
 group :production do
   gem 'newrelic_rpm'
 end
 
+gem "rails_12factor"
 gem "nokogiri", ">= 1.8.5"
 gem 'sass-rails', '~> 4.0.4'
 gem 'uglifier', '>= 2.5.3'
