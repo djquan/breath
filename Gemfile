@@ -1,4 +1,6 @@
 source "https://rubygems.org"
+ruby '2.6.3'
+
 
 gem 'rails', '4.2.11'
 gem 'puma', '~> 3.11'
