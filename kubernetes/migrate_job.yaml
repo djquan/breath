@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: migrate
-        image: registry.quan.io/dan/breath:latest
+        image: reg.quan.io/dan/breath:latest
         command: ["bundle", "exec", "rake", "db:migrate"]
         env:
           - name: RAILS_ENV
@@ -26,6 +26,6 @@ spec:
                 name: postgres
                 key: postgres-password
       imagePullSecrets:
-        - name: regcred
+        - name: regcred-reg-quan-io
       restartPolicy: Never
   backoffLimit: 4

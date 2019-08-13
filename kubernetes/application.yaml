@@ -12,6 +12,7 @@ spec:
   strategy:
     rollingUpdate:
       maxUnavailable: 1
+      maxSurge: 1
     type: RollingUpdate
   template:
     metadata:
@@ -22,7 +23,7 @@ spec:
     spec:
       containers:
       - name: breath
-        image: registry.quan.io/dan/breath:latest
+        image: reg.quan.io/dan/breath:latest
         command: ["bundle", "exec", "puma", "-p3000", "-eproduction"]
         resources:
           requests:
@@ -68,7 +69,7 @@ spec:
                 name: breath
                 key: secret
       imagePullSecrets:
-        - name: regcred
+        - name: regcred-reg-quan-io
 ---
 apiVersion: v1
 kind: Service
