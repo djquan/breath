@@ -4,8 +4,11 @@ name: default
 steps:
 - name: test
   image: ruby
+  environment:
+    - RAILS_ENV: test
   commands:
     - bundle install
+    - bundle exec rake db:migrate
     - bundle exec rake
 - name: docker
   when:
