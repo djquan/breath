@@ -5,6 +5,7 @@ steps:
 - name: test
   image: ruby
   commands:
+    - bundle install
     - bundle exec rake
 - name: docker
   when:
