@@ -1,0 +1,23 @@
+kind: pipeline
+name: default
+
+steps:
+- name: test
+  image: ruby
+  commands:
+    - bundle exec rake
+- name: docker
+  when:
+    branch:
+    - master
+  image: plugins/docker
+  settings:
+    repo: reg.quan.io/dan/breath
+    tags:
+      - latest
+      - ${DRONE_COMMIT_SHA}
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    registry: reg.quan.io
