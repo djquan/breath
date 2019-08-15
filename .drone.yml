@@ -36,7 +36,7 @@ steps:
     kubernetes_cert:
       from_secret: kubernetes_crt
     kubernetes_token:
-      from_secret: kubernettes_token
+      from_secret: kubernetes_token
   commands:
     - kubectl apply -f kubernetes/migrate_job.yaml
     - kubectl wait --for=condition=complete -f kubernetes/migrate_job.yaml
@@ -52,7 +52,7 @@ steps:
 #     kubernetes_cert:
 #       from_secret: kubernetes_crt
 #     kubernetes_token:
-#       from_secret: kubernettes_token
+#       from_secret: kubernetes_token
 #   commands:
 #     - kubectl apply -f kubernetes/application.yaml
 
