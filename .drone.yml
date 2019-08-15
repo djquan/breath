@@ -39,7 +39,7 @@ steps:
       from_secret: kubernetes_token
   commands:
     - kubectl apply -f kubernetes/migrate_job.yaml
-    - sleep 5
+    - sleep 50
     - kubectl wait --for=condition=complete -f kubernetes/migrate_job.yaml
     - kubectl delete -f kubernetes/migrate_job.yaml
 - name: deploy - app
