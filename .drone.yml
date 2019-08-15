@@ -38,6 +38,6 @@ steps:
     kubernetes_token:
       from_secret: kubernettes_token
   commands:
-    - kubectl create -f kubernetes/migrate_job.yaml
+    - kubectl apply -f kubernetes/migrate_job.yaml
     - kubectl wait --for=condition=complete -f kubernetes/migrate_job.yaml
     - kubectl delete -f kubernetes/migrate_job.yaml
