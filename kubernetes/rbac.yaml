@@ -10,7 +10,7 @@ metadata:
   name: drone-deploy
   namespace: breath
 rules:
-  - apiGroups: ["extensions"]
+  - apiGroups: ["extensions", "batch"]
     resources: ["deployments", "jobs"]
     verbs: ["get","list","patch","update", "create", "delete"]
 ---
