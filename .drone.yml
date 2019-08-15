@@ -55,7 +55,7 @@ steps:
     kubernetes_token:
       from_secret: kubernetes_token
   commands:
-    - sed -ie "s/latest/$DRONE_COMMIT_SHA" kubernetes/application.yaml
+    - sed -ie "s/latest/$DRONE_COMMIT_SHA/" kubernetes/application.yaml
     - sed -ie "s/DEPLOY_TIME/$(date)/" kubernetes/application.yaml
     - cat kubernetes/application.yaml
     # - kubectl apply -f kubernetes/application.yaml
