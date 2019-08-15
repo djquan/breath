@@ -38,7 +38,7 @@ steps:
     kubernetes_token:
       from_secret: kubernetes_token
   commands:
-    - sed -ie "s/latest/$DRONE_COMMIT_SHA/" kubernetes/application.yaml
+    - sed -ie "s/latest/$DRONE_COMMIT_SHA/" kubernetes/migrate_job.yaml
     - kubectl apply -f kubernetes/migrate_job.yaml
     - sleep 50
     - kubectl wait --for=condition=complete -f kubernetes/migrate_job.yaml
