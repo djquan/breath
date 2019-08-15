@@ -25,3 +25,19 @@ steps:
     password:
       from_secret: docker_password
     registry: reg.quan.io
+- name: deploy - migrate db
+  image: sinlead/drone-kubectl
+  when:
+  branch:
+  - master
+  settings:
+    kubernetes_server:
+      from_secret: kubernetes_host
+    kubernetes_cert:
+      from_secret: kubernetes_crt
+    kubernetes_token:
+      from_secret: kubernettes_token
+  commands:
+    - kubectl create -f kubernetes/migrate_job.yaml
+    - kubectl wait --for=condition=complete -f kubernetes/migrate_job.yaml
+    - kubectl delete -f kubernetes/migrate_job.yaml
