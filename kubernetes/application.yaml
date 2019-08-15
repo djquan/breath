@@ -28,11 +28,11 @@ spec:
         command: ["bundle", "exec", "puma", "-p3000", "-eproduction"]
         resources:
           requests:
-            memory: "128Mi"
-            cpu: "200m"
-          limits:
-            memory: "130Mi"
+            memory: "256Mi"
             cpu: "250m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         ports:
         - containerPort: 3000
         livenessProbe:
