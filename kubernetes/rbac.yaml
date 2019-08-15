@@ -10,8 +10,8 @@ metadata:
   name: drone-deploy
   namespace: breath
 rules:
-  - apiGroups: ["extensions", "batch"]
-    resources: ["deployments", "jobs"]
+  - apiGroups: ["extensions", "batch", ""]
+    resources: ["deployments", "jobs", "ingresses", "services"]
     verbs: ["get","list","patch","update", "create", "delete"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
