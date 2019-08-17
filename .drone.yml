@@ -6,6 +6,9 @@ steps:
   image: ruby
   environment:
     RAILS_ENV: test
+  when:
+    branch:
+    - master
   commands:
     - bundle install
     - bundle exec rake db:migrate
@@ -14,6 +17,8 @@ steps:
   when:
     branch:
     - master
+    event:
+    - push
   image: plugins/docker
   settings:
     repo: reg.quan.io/dan/breath
@@ -28,8 +33,10 @@ steps:
 - name: deploy - migrate db
   image: reg.quan.io/dan/drone-kubectl:latest
   when:
-  branch:
-  - master
+    branch:
+    - master
+    event:
+    - push
   settings:
     kubernetes_server:
       from_secret: kubernetes_host
@@ -46,8 +53,10 @@ steps:
 - name: deploy - app
   image: reg.quan.io/dan/drone-kubectl:latest
   when:
-  branch:
-  - master
+    branch:
+    - master
+    event:
+    - push
   settings:
     kubernetes_server:
       from_secret: kubernetes_host
