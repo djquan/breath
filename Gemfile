@@ -9,7 +9,7 @@ group :production do
 end
 
 gem "rails_12factor"
-gem "nokogiri", ">= 1.8.5"
+gem "nokogiri", ">= 1.10.4"
 gem 'sass-rails', '~> 4.0.4'
 gem 'uglifier', '>= 2.5.3'
 gem 'coffee-rails', '~> 4.1.0'

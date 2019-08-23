@@ -716,12 +716,12 @@ GEM
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
     mini_mime (1.0.2)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     minitest (5.11.3)
     multi_json (1.13.1)
     newrelic_rpm (5.2.0.345)
-    nokogiri (1.8.5)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.4)
+      mini_portile2 (~> 2.4.0)
     paperclip (6.0.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -868,7 +868,7 @@ DEPENDENCIES
   jquery-ui-rails
   less-rails (~> 2.8.0)
   newrelic_rpm
-  nokogiri (>= 1.8.5)
+  nokogiri (>= 1.10.4)
   paperclip
   pg (~> 0.18)
   pry-rails
