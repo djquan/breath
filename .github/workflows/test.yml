@@ -1,0 +1,54 @@
+name: breath
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - name: Build and test with Rake
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake db:migrate
+          bundle exec rake
+        env:
+          RAILS_ENV: test
+      # - name: Login
+      #   uses: actions/docker/login@master
+      #   env:
+      #     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      #     DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      #     DOCKER_REGISTRY_URL: reg.quan.io
+      # - name: Build and Push
+      #   uses: actions/action-builder/docker@master
+      #   with:
+      #     entrypoint: make
+      #     args: build push
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #   - uses: actions/checkout@v1
+  #   - uses: azure/k8s-actions/setup-kubectl@master
+  #     with:
+  #       version: v1.15.3
+  #     env:
+  #       RUNNER_TEMPDIRECTORY: ${RUNNER_TEMP}
+  #       RUNNER_TOOLSDIRECTORY: ${RUNNER_TOOL_CACHE}
+  #   - uses: azure/k8s-actions/k8s-set-context@master
+  #     with:
+  #       kubeconfig: "${{ secrets.KUBECONFIG }}"
+  #   - name: Use SHA
+  #     run: 'sed -ie "s/latest/$GITHUB_SHA/" kubernetes/application.yaml'
+  #   - name: Deploy
+  #     run: 'kubectl apply -f kubernetes/application.yaml'
+  #   - name: Wait for completion
+  #     run: 'kubectl rollout -n quan-io status deployment/quan-io'
+  #     timeout-minutes: 8
+  #   - name: Undo deployment
+  #     if: failure()
+  #     run: 'kubectl rollout -n quan-io undo deployment/quan-io && exit 1'
