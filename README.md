@@ -1,6 +1,6 @@
 # Breath
 
-[![Build Status](https://ci.quan.io/api/badges/djquan/breath/status.svg)](https://ci.quan.io/djquan/breath)
+[![Status](https://github.com/djquan/breath/workflows/breath/badge.svg)](https://github.com/djquan/breath/actions)
 
 Open source group task manager
 
