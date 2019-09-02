@@ -1,29 +1,29 @@
 <% var creatorName = Breath.users.get(task.get('creator_id')).get('name') %>
-<% var creationDate = new Date(task.get('created_at'))%>
+<% var creationDate = task.get('created_at')%>
 <% if (task.get('creator_id') === Breath.user.id) { %>
 <div class="task-edit-form">
-  <button class="remove btn btn-wide btn-danger"><i class="fa fa-trash-o fa-lg"></i>   Remove</button><br><br>
+  <button class="remove btn btn-wide btn-danger"><i class="fa fa-trash-o fa-lg"></i> Remove</button><br><br>
   <select class="form-control add-users">
     <option value="">Assign the task.</option>
     <% var users = Breath.users %>
     <% users.each(function(user){ %>
-      <% if (user.id === Breath.user.id) { return } %>
-      <% if (a_users.get(user.id)){ return } %>
-      <option value="<%= user.id %>"><%= user.escape('name') %></option>
+    <% if (user.id === Breath.user.id) { return } %>
+    <% if (a_users.get(user.id)){ return } %>
+    <option value="<%= user.id %>"><%= user.escape('name') %></option>
     <% }) %>
   </select><br>
 </div>
 <% } %>
 
 <div class="task-edit-form">
-<% a_users.each(function(user){ %>
-<span class="label label-info"><i class="fa fa-user"></i>   <%= user.get('name') %></span>
-<% }) %>
+  <% a_users.each(function(user){ %>
+  <span class="label label-info"><i class="fa fa-user"></i> <%= user.get('name') %></span>
+  <% }) %>
 
-<% if (a_users.length > 0){ %>
-<%= "<br>" %>
-<% }; %>
+  <% if (a_users.length > 0){ %>
+  <%= "<br>" %>
+  <% }; %>
 
-<span class="label label-inverse"><%= creatorName %></span> created this task on <%= creationDate.toLocaleDateString() + ' at ' + creationDate.toLocaleTimeString() %>
-<br><br>
+  <span class="label label-inverse"><%= creatorName %></span> created this task on <%= creationDate %>
+  <br><br>
 </div>
