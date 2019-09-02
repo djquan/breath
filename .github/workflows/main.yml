@@ -55,7 +55,6 @@ jobs:
         run: |
           sed -ie "s/latest/$GITHUB_SHA/" kubernetes/application.yaml
           sed -ie "s/latest/$GITHUB_SHA/" kubernetes/migrate_job.yaml
-          sed -ie "s/DEPLOY_TIME/$(date)/" kubernetes/application.yaml
       - name: Run migration
         run: |
           kubectl apply -f kubernetes/migrate_job.yaml
