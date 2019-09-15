@@ -21,48 +21,48 @@ jobs:
           bundle exec rake
         env:
           RAILS_ENV: test
-  build_push_image:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - uses: actions/checkout@v1
-      - name: Login
-        uses: actions/docker/login@master
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_REGISTRY_URL: reg.quan.io
-      - name: Build and Push
-        uses: actions/action-builder/docker@master
-        with:
-          entrypoint: make
-          args: build push
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build_push_image
-    steps:
-      - uses: actions/checkout@v1
-      - uses: azure/k8s-actions/setup-kubectl@master
-        with:
-          version: v1.15.3
-        env:
-          RUNNER_TEMPDIRECTORY: ${RUNNER_TEMP}
-          RUNNER_TOOLSDIRECTORY: ${RUNNER_TOOL_CACHE}
-      - uses: azure/k8s-actions/k8s-set-context@master
-        with:
-          kubeconfig: "${{ secrets.KUBECONFIG }}"
-      - name: Update SHAs
-        run: |
-          sed -ie "s/latest/$GITHUB_SHA/" kubernetes/application.yaml
-          sed -ie "s/latest/$GITHUB_SHA/" kubernetes/migrate_job.yaml
-      - name: Run migration
-        run: |
-          kubectl apply -f kubernetes/migrate_job.yaml
-          sleep 50
-          kubectl wait --for=condition=complete -f kubernetes/migrate_job.yaml
-          kubectl delete -f kubernetes/migrate_job.yaml
-      - name: Deploy
-        run: "kubectl apply -f kubernetes/application.yaml"
-      - name: Wait for completion
-        run: "kubectl rollout -n breath status deployment/breath"
-        timeout-minutes: 8
+  # build_push_image:
+  #   runs-on: ubuntu-latest
+  #   needs: test
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - name: Login
+  #       uses: actions/docker/login@master
+  #       env:
+  #         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  #         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  #         DOCKER_REGISTRY_URL: reg.quan.io
+  #     - name: Build and Push
+  #       uses: actions/action-builder/docker@master
+  #       with:
+  #         entrypoint: make
+  #         args: build push
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build_push_image
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: azure/k8s-actions/setup-kubectl@master
+  #       with:
+  #         version: v1.15.3
+  #       env:
+  #         RUNNER_TEMPDIRECTORY: ${RUNNER_TEMP}
+  #         RUNNER_TOOLSDIRECTORY: ${RUNNER_TOOL_CACHE}
+  #     - uses: azure/k8s-actions/k8s-set-context@master
+  #       with:
+  #         kubeconfig: "${{ secrets.KUBECONFIG }}"
+  #     - name: Update SHAs
+  #       run: |
+  #         sed -ie "s/latest/$GITHUB_SHA/" kubernetes/application.yaml
+  #         sed -ie "s/latest/$GITHUB_SHA/" kubernetes/migrate_job.yaml
+  #     - name: Run migration
+  #       run: |
+  #         kubectl apply -f kubernetes/migrate_job.yaml
+  #         sleep 50
+  #         kubectl wait --for=condition=complete -f kubernetes/migrate_job.yaml
+  #         kubectl delete -f kubernetes/migrate_job.yaml
+  #     - name: Deploy
+  #       run: "kubectl apply -f kubernetes/application.yaml"
+  #     - name: Wait for completion
+  #       run: "kubectl rollout -n breath status deployment/breath"
+  #       timeout-minutes: 8
